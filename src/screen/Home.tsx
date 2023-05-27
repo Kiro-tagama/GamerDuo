@@ -1,7 +1,8 @@
-import { Text, View } from 'react-native';
+import { Text, View,Image } from 'react-native';
 import { stylesHome } from '../style/style';
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
+
 
 export function Home() {
 
@@ -15,7 +16,13 @@ export function Home() {
 
   return (
     <View style={stylesHome.container}>
-      <Text style={{color:"#eee",textAlign:'center',height:60,backgroundColor:'red'}}>list</Text>
+      <View style={{alignItems:'center'}}>
+        <Image
+          style={{height:60,width:60,borderRadius:0,resizeMode:'center',backgroundColor:'#eeeeee6c'}}
+          source={{uri:'https://img.quizur.com/f/img610bf00c06c710.35752032.png'}}
+        />
+      </View>
+      
       <Card profile={perfil[0]}/>
       <Menu />
     </View>
