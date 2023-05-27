@@ -22,23 +22,25 @@ export const stylesHome = StyleSheet.create({
     flex:1
   },
   card:{
-    backgroundColor:'red',
     height:"80%",
     borderRadius:30,
-    padding:10,
-    justifyContent:'flex-end',
+    overflow:'hidden',
+    justifyContent:'flex-end'
   },
   card2:{
     backgroundColor: '#222222c0',
     borderRadius:25,
     padding:10,
+    zIndex:3,
+    margin:10
   },
   cardInfo:{
-    backgroundColor:"green",
+    backgroundColor:"#aaaaaa4c",
     borderRadius:25,
     padding:10,
     flex:1,
-    margin:3
+    margin:3,
+    flexDirection:'row'
   },
   cardImg:{
     backgroundColor:"green",
@@ -80,5 +82,9 @@ export const stylesMenu = StyleSheet.create({
 export const stylesTexts = StyleSheet.create({
   h1:{},
   h2:{},
-  normal:{}
+  normal:{
+    color:'#eee',
+    fontSize:16,
+    margin:2
+  }
 })
