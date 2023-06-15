@@ -24,7 +24,7 @@ export function Home() {
       </View>
       
       <Card profile={perfil[0]}/>
-      <Menu />
+      <Menu page="home"/>
     </View>
   );
 }

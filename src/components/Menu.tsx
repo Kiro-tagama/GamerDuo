@@ -2,8 +2,7 @@ import { TouchableHighlight, View, Text } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
 
-export function Menu() {
-  const page ="Home"
+export function Menu({page}:string){
 
   function like(like:'like'|'deslike') {
 
@@ -16,7 +15,7 @@ export function Menu() {
 
   return(
     <View style={{flexDirection:'row',justifyContent:'center'}}>
-      {page == 'Home'?
+      {page == 'home'?
         <TouchableHighlight style={stylesMenu.bt}
         onPress={()=>like("deslike")}
         underlayColor="#ff7d63">
@@ -34,7 +33,7 @@ export function Menu() {
           <Text>P</Text></TouchableHighlight>
       </View>
       
-      {page == 'Home'?
+      {page == 'home'?
         <TouchableHighlight 
         style={stylesMenu.bt} 
         onPress={()=>like("like")}

@@ -1,49 +1,60 @@
-import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { colors, stylesLogin, stylesTexts } from '../style/style';
+import { useLogin } from '../hooks/useLogin';
 
 export function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    // Lógica de autenticação
-    console.log('Login realizado com sucesso!');
-  };
-
-  const handleSignUp = () => {
-    // Navegar para a tela de cadastro
-    console.log('Navegar para a tela de cadastro');
-  };
+  const {type, name, setName, email, setEmail,
+    password, setPassword, handleLogin, handleType}=useLogin()
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Bem-vindo</Text>
-      <Text style={{ fontSize: 18, marginBottom: 20 }}>Login</Text>
+      <Text style={[stylesTexts.h1,{marginVertical:20}]}>Gamer Duo</Text>
+      <Text style={stylesTexts.h2}>Bem-vindo</Text>
+      <Text style={[stylesTexts.h2,{marginTop:40,marginBottom:20,width:"70%"}]}>{type == 'login' ? "Login" : "Cadastro"}</Text>
+      {type == 'login' ? null :
       <TextInput
-        style={{ height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+        style={stylesLogin.input}
+        placeholder="Nome"
+        onChangeText={text => setName(text)}
+        value={name}
+        placeholderTextColor={colors.gray}
+      />}
+      <TextInput
+        style={stylesLogin.input}
         placeholder="Email"
         onChangeText={text => setEmail(text)}
         value={email}
+        placeholderTextColor={colors.gray}
       />
       <TextInput
-        style={{ height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+        style={stylesLogin.input}
         placeholder="Senha"
         secureTextEntry
         onChangeText={text => setPassword(text)}
         value={password}
+        placeholderTextColor={colors.gray}
       />
       <TouchableOpacity
-        style={{ backgroundColor: 'blue', padding: 10, borderRadius: 5, marginBottom: 10 }}
+        style={[stylesLogin.bt,{marginTop:20}]}
         onPress={handleLogin}
       >
-        <Text style={{ color: 'white', textAlign: 'center', fontSize: 16 }}>Logar</Text>
+        <Text style={stylesTexts.h2}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>
       </TouchableOpacity>
-      <Text style={{ marginTop: 20 }}>Não tenho conta</Text>
+
+      
       <TouchableOpacity
-        style={{ backgroundColor: 'gray', padding: 10, borderRadius: 5 }}
-        onPress={handleSignUp}
+        style={{marginTop:20}}
+        onPress={handleType}
       >
-        <Text style={{ color: 'white', textAlign: 'center', fontSize: 16 }}>Criar conta</Text>
+        {type == 'login' ?
+        <>
+        <Text style={stylesTexts.normal}>Não tenho conta</Text>
+        <Text style={[stylesTexts.normal,{textAlign:"center",textDecorationLine:"underline"}]}>Criar conta</Text>
+        </>:
+        <>
+        <Text style={stylesTexts.normal}>Já tenho conta</Text>
+        <Text style={[stylesTexts.normal,{textAlign:"center",textDecorationLine:"underline"}]}>Voltar ao login</Text>
+        </>}
       </TouchableOpacity>
     </View>
   );

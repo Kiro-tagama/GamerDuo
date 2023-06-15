@@ -1,5 +1,16 @@
 import { StyleSheet, Platform } from 'react-native';
 
+export const colors={
+  white:'#eee',
+  black:'#222',
+  gray:'#666',
+  midWhite:'#eee33',
+  midBlack:'#00033',
+  midGray:'#66633',
+  green:'#A2EF44',
+  red:'#FF8080'
+}
+
 export const stylesApp = StyleSheet.create({
   container: {
     flex: 1,
@@ -53,7 +64,7 @@ export const stylesHome = StyleSheet.create({
 
 export const stylesMenu = StyleSheet.create({
   bt:{
-    backgroundColor:"#666666c0",
+    backgroundColor:"#666666cc",
     width:60,
     height:60,
     borderRadius:30,
@@ -61,7 +72,7 @@ export const stylesMenu = StyleSheet.create({
     alignItems:'center'
   },
   opt:{
-    backgroundColor:"#66666629",
+    backgroundColor:"#666666cc",
     height:60,
     borderRadius:30,
     flexDirection:'row',
@@ -79,12 +90,38 @@ export const stylesMenu = StyleSheet.create({
   }
 })
 
+export const stylesLogin= StyleSheet.create({
+  input:{
+    height: 60, 
+    width: '90%', 
+    borderColor: colors.white, 
+    borderWidth: 1, 
+    marginBottom: 10,
+    backgroundColor:'#00000033',
+    borderRadius:30,
+    paddingHorizontal:20,
+    fontSize:20,
+    color:colors.white
+  },
+  bt:{
+    height: 60, 
+    width: '90%', 
+    borderColor: colors.white, 
+    borderWidth: 1, 
+    marginBottom: 10,
+    backgroundColor:'#00000033',
+    borderRadius:30,
+    padding:10,
+    alignItems:"center"
+  }
+})
+
 export const stylesTexts = StyleSheet.create({
-  h1:{},
-  h2:{},
+  h1:{ color:colors.white, fontSize: 36, fontWeight: 'bold' },
+  h2:{color:colors.white, fontSize: 24, fontWeight: "500"},
   normal:{
-    color:'#eee',
-    fontSize:16,
+    color:colors.white,
+    fontSize:20,
     margin:2
   }
 })
