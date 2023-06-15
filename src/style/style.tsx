@@ -14,7 +14,7 @@ export const colors={
 export const stylesApp = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#222',
+    backgroundColor: colors.black,
     ...Platform.select({
       android:{
         paddingTop:30
@@ -109,7 +109,7 @@ export const stylesLogin= StyleSheet.create({
     borderColor: colors.white, 
     borderWidth: 1, 
     marginBottom: 10,
-    backgroundColor:'#00000033',
+    backgroundColor:colors.white,
     borderRadius:30,
     padding:10,
     alignItems:"center"

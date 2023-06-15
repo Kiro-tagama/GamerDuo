@@ -8,9 +8,9 @@ export function Login() {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={[stylesTexts.h1,{marginVertical:20}]}>Gamer Duo</Text>
+      <Text style={[stylesTexts.h1,{marginVertical:0}]}>Gamer Duo</Text>
       <Text style={stylesTexts.h2}>Bem-vindo</Text>
-      <Text style={[stylesTexts.h2,{marginTop:40,marginBottom:20,width:"70%"}]}>{type == 'login' ? "Login" : "Cadastro"}</Text>
+      <Text style={[stylesTexts.h2,{marginTop:40,marginBottom:20}]}>{type == 'login' ? "Login" : "Cadastro"}</Text>
       {type == 'login' ? null :
       <TextInput
         style={stylesLogin.input}
@@ -35,10 +35,10 @@ export function Login() {
         placeholderTextColor={colors.gray}
       />
       <TouchableOpacity
-        style={[stylesLogin.bt,{marginTop:20}]}
+        style={[stylesLogin.bt,{margin:30}]}
         onPress={handleLogin}
       >
-        <Text style={stylesTexts.h2}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>
+        <Text style={[stylesTexts.h2,{color:colors.black}]}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>
       </TouchableOpacity>
 
       
