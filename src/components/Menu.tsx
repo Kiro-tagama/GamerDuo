@@ -2,7 +2,11 @@ import { TouchableHighlight, View, Text } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
 
-export function Menu({page}:string){
+interface propsPage{
+  page:string
+}
+
+export function Menu({page}:propsPage){
 
   function like(like:'like'|'deslike') {
 

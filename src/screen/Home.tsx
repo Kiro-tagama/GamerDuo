@@ -18,12 +18,12 @@ export function Home() {
     <View style={stylesHome.container}>
       <View style={{alignItems:'center'}}>
         <Image
-          style={{height:60,width:60,borderRadius:0,resizeMode:'center',backgroundColor:'#eeeeee6c'}}
+          style={{height:60,width:60,borderRadius:30,resizeMode:'center',backgroundColor:'#eeeeee6c'}}
           source={{uri:'https://img.quizur.com/f/img610bf00c06c710.35752032.png'}}
         />
       </View>
-      
       <Card profile={perfil[0]}/>
+
       <Menu page="home"/>
     </View>
   );

@@ -1,14 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
-import { stylesApp } from './src/style/style';
+import { colors, stylesApp } from './src/style/style';
 
-import { Home } from './src/screen/Home';
-import { Login } from './src/screen/Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { Router } from './src/global/Route';
+
+const MyTheme = {
+  dark: true,
+  colors: {
+    primary: '',
+    background: colors.black,
+    card: '',
+    text: colors.white,
+    border: colors.gray,
+    notification: '',
+  },
+};
 
 export default function App() {
   return (
     <View style={stylesApp.container}>
-      <Login/>
+      <NavigationContainer theme={MyTheme}>
+        <Router/>
+      </NavigationContainer>
       <StatusBar style="light" />
     </View>
   );

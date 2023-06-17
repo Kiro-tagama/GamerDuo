@@ -117,7 +117,7 @@ export const stylesLogin= StyleSheet.create({
 })
 
 export const stylesTexts = StyleSheet.create({
-  h1:{ color:colors.white, fontSize: 36, fontWeight: 'bold' },
+  h1:{color:colors.white, fontSize: 36, fontWeight: 'bold'},
   h2:{color:colors.white, fontSize: 24, fontWeight: "500"},
   normal:{
     color:colors.white,

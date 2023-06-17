@@ -3,13 +3,13 @@ export const mainProfile=[
     "id": 1,
     "email": "perfil1@example.com",
     "senha": "senha123",
-    "nome": "Perfil 1"
+    "nome": "maria"
     },
     {
-    "id": 1,
-    "email": "perfil1@example.com",
+    "id": 2,
+    "email": "perfil2@example.com",
     "senha": "senha123",
-    "nome": "Perfil 1"
+    "nome": "joao"
     }
 ]
 
