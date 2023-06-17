@@ -1,6 +1,7 @@
 import { TouchableHighlight, View, Text } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
+import { user } from "../global/Route";
 
 interface propsPage{
   page:string
@@ -34,7 +35,7 @@ export function Menu({page}:propsPage){
         <TouchableHighlight style={stylesMenu.opts}>
           <Feather name="message-circle" size={30} color="#eee" /></TouchableHighlight>
         <TouchableHighlight style={stylesMenu.opts}>
-          <Text>P</Text></TouchableHighlight>
+          <Text>{user.nome[0]}</Text></TouchableHighlight>
       </View>
       
       {page == 'home'?

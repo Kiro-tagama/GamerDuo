@@ -6,12 +6,13 @@ interface Card{
   profile:{
     id: number;
     nome: string;
-    profileImg: string;
+    img: string;
+    agentFav: number;
   }
 }
 
 export function Card({profile}:Card){
-  const agent=agents[7] 
+  const agent=agents[profile.agentFav] 
   
   return(
     <View style={[stylesHome.card,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>
@@ -25,7 +26,7 @@ export function Card({profile}:Card){
         <View style={{flexDirection:"row",marginBottom:10}}>
           <Image
             style={stylesHome.cardImg}
-            source={{uri:profile.profileImg}}
+            source={{uri:profile.img}}
             />
           <View style={{padding:10,flex:1,margin:3}}>
             <Text style={stylesTexts.normal}>{profile.nome}</Text>
