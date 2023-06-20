@@ -4,9 +4,9 @@ export const colors={
   white:'#eee',
   black:'#222',
   gray:'#666',
-  midWhite:'#eee33',
-  midBlack:'#00033',
-  midGray:'#66633',
+  midWhite:'#eeeeee33',
+  midBlack:'#00000033',
+  midGray:'#66666633',
   green:'#A2EF44',
   red:'#FF8080'
 }
@@ -28,12 +28,12 @@ export const stylesApp = StyleSheet.create({
 
 export const stylesHome = StyleSheet.create({
   container: {
-    padding:12,
-    justifyContent:'space-between',
+    padding:10,
+    justifyContent:'center',
     flex:1
   },
   card:{
-    height:"80%",
+    height:"90%",
     borderRadius:30,
     overflow:'hidden',
     justifyContent:'flex-end'
@@ -64,7 +64,7 @@ export const stylesHome = StyleSheet.create({
 
 export const stylesMenu = StyleSheet.create({
   bt:{
-    backgroundColor:"#666666cc",
+    backgroundColor:colors.midGray,
     width:60,
     height:60,
     borderRadius:30,
@@ -72,7 +72,7 @@ export const stylesMenu = StyleSheet.create({
     alignItems:'center'
   },
   opt:{
-    backgroundColor:"#666666cc",
+    backgroundColor:colors.midGray,
     height:60,
     borderRadius:30,
     flexDirection:'row',
@@ -81,7 +81,7 @@ export const stylesMenu = StyleSheet.create({
     gap:5
   },
   opts:{
-    backgroundColor:"#533",
+    backgroundColor:'transparent',
     borderRadius:30,
     width:50,
     height:50,
