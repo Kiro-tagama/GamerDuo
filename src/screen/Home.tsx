@@ -3,31 +3,10 @@ import { stylesHome } from '../style/style';
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
 import { perfis } from '../api/fakeProfiles';
-import useMenu from '../hooks/useMenu';
-import { useEffect, useState } from 'react';
-
 
 export function Home() {
 
-  const {page} = useMenu()
   const perfil=perfis[0]
-
-  const [tela,setTela]=useState(page)
-  
-  function funcPage() {
-    if(page == "home"){
-      return <Card profile={perfil}/>
-    }
-    else if(page == "chat"){
-      return <Text>chat</Text>
-    }
-    else{
-      return <Text>profile</Text>
-    }
-  }
-
-  useEffect(()=>{console.log(tela);
-  },[page])
 
   return (
     <>
