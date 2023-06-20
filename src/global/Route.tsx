@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { Login } from "../screen/Login"
 import { Home } from "../screen/Home"
 import { Chat } from "../screen/Chat"
+import { InChat } from "../screen/InChat"
+import { Profile } from "../screen/Profile"
 
 import { mainProfile } from "../api/fakeProfiles"
 import { useNavigation } from "@react-navigation/native"
@@ -20,7 +22,9 @@ function Router() {
       : //se tiver usuario ele pega as telas a baixo
       <>
         <Stack.Screen name="home" component={Home}/>
-        <Stack.Screen name="chat/" component={Chat}/>
+        <Stack.Screen name="chat" component={Chat}/>
+        <Stack.Screen name="inchat" component={InChat}/>
+        <Stack.Screen name="Profile" component={Profile}/>
       </>
       }
     </Stack.Navigator>
