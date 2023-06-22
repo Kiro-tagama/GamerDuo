@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { colors } from "../style/style";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+interface PropsPage{
+  propsPage:'home'|'chat'|'profile'|'inChat'|'login'
+}
 
 export default function useMenu() {
-  const [page, setPage]= useState<'home'|'chat'|'profile'>('home')
+  const urlPage=useRoute()
+
+  const [page, setPage]= useState<PropsPage>(urlPage.name)
+
+  const nav=useNavigation()
   
   const active={
     backgroundColor:colors.white,
@@ -17,5 +26,5 @@ export default function useMenu() {
     elevation: 4,
   }
 
-  return {page,setPage,active}
+  return {page,active,nav}
 }

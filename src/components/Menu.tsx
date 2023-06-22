@@ -1,12 +1,13 @@
-import { TouchableHighlight, View, Text } from "react-native";
+import { TouchableHighlight, View, Text, Image } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
-import { user } from "../global/Route";
 import useMenu from "../hooks/useMenu";
+import { useLogin } from "../hooks/useLogin";
 
 export function Menu(){
 
-  const {page,setPage,active} = useMenu()
+  const {page,active,nav} = useMenu()
+  const {user}=useLogin()
 
   function like(like:'like'|'deslike') {
 
@@ -31,19 +32,29 @@ export function Menu(){
       <View style={stylesMenu.opt}>
         <TouchableHighlight 
           style={[stylesMenu.opts, page =="home" ? active: null]}
-          onPress={()=>setPage('home')}
+          onPress={()=>{
+            nav.navigate('home') 
+          }}
           >
           <Feather name="layers" size={30} color={page == 'home' ? "#222" : "#eeeeeecc"} /></TouchableHighlight>
         <TouchableHighlight 
           style={[stylesMenu.opts, page =="chat" ? active: null]} 
-          onPress={()=>{setPage('chat')}}
+          onPress={()=>{
+            nav.navigate('chat')
+          }}
           >
           <Feather name="message-circle" size={30} color={page == 'chat' ? "#222" : "#eeeeeecc"} /></TouchableHighlight>
         <TouchableHighlight 
           style={[stylesMenu.opts, page =="profile" ? active: null]}
-          onPress={()=>setPage('profile')}
+          onPress={()=>{
+            nav.navigate('profile')
+          }}
           >
-          <Text style={{color:page == 'profile' ? "#000" : "#eee"}}>{user.nome[0]}</Text></TouchableHighlight>
+            <Image
+              style={{width:'90%',height:'90%',borderRadius:30}}
+              source={{uri:user.imgProfile}}
+            />
+          </TouchableHighlight>
       </View>
       
       {page == 'home'?

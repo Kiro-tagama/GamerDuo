@@ -1,20 +1,27 @@
 import { useState } from "react";
+import { mainProfile } from "../api/fakeProfiles";
+import { useNavigation } from "@react-navigation/native";
 
 export function useLogin() {
+  
   const [type, setType] = useState('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    if(type=='login'){
+  const [user,setUser]=useState<any>(mainProfile[0])
+
+  function handleLogin(){
+    if (type == 'login') {
       console.log('logar');
-    }else{
+      {email=="0"?setUser(mainProfile[0]):setUser(mainProfile[1])}
+
+    } else {
       console.log('cadartra');
     }
-  };
+  }
 
-  const handleType = () => {
+  function handleType (){
     if(type=='login'){
       setType('cadastra')
     }else{
@@ -23,7 +30,7 @@ export function useLogin() {
   }
 
   return {
-    type,
+    type, user,
     name, setName,
     email, setEmail,
     password, setPassword,

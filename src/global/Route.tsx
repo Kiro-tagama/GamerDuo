@@ -5,16 +5,14 @@ import { Home } from "../screen/Home"
 import { Chat } from "../screen/Chat"
 import { InChat } from "../screen/InChat"
 import { Profile } from "../screen/Profile"
-
-import { mainProfile } from "../api/fakeProfiles"
-import { useNavigation } from "@react-navigation/native"
+import { useLogin } from "../hooks/useLogin"
 
 const Stack= createNativeStackNavigator()
-const nav= ''
-
-const user=mainProfile[0]
 
 function Router() {
+  const {user}=useLogin()
+  console.log('aqui');
+  
   return(
     <Stack.Navigator screenOptions={{headerShown:false}}>
       {user == null ?
@@ -24,11 +22,11 @@ function Router() {
         <Stack.Screen name="home" component={Home}/>
         <Stack.Screen name="chat" component={Chat}/>
         <Stack.Screen name="inchat" component={InChat}/>
-        <Stack.Screen name="Profile" component={Profile}/>
+        <Stack.Screen name="profile" component={Profile}/>
       </>
       }
     </Stack.Navigator>
   )
 }
 
-export {Router,user}
+export {Router}

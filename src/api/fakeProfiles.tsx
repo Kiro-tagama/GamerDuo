@@ -3,13 +3,15 @@ export const mainProfile=[
     "id": 1,
     "email": "perfil1@example.com",
     "senha": "senha123",
-    "nome": "Maria"
+    "nome": "Maria",
+    "imgProfile":"https://i.pinimg.com/236x/63/25/99/6325998bf75b6f8db4d316f1c26daa60.jpg"
     },
     {
     "id": 2,
     "email": "perfil2@example.com",
     "senha": "senha123",
-    "nome": "Joao"
+    "nome": "Joao",
+    "imgProfile":"https://t.ctcdn.com.br/mcnr-uryXo29vtAOedtocsdjbyw=/512x288/smart/filters:format(webp)/i729250.jpeg"
     }
 ]
 
