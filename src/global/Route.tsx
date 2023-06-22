@@ -11,7 +11,6 @@ const Stack= createNativeStackNavigator()
 
 function Router() {
   const {user}=useLogin()
-  console.log('aqui');
   
   return(
     <Stack.Navigator screenOptions={{headerShown:false}}>
@@ -21,7 +20,7 @@ function Router() {
       <>
         <Stack.Screen name="home" component={Home}/>
         <Stack.Screen name="chat" component={Chat}/>
-        <Stack.Screen name="inchat" component={InChat}/>
+        <Stack.Screen name="inChat" component={InChat}/>
         <Stack.Screen name="profile" component={Profile}/>
       </>
       }

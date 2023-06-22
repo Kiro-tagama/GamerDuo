@@ -2,6 +2,7 @@ import { Text, View, FlatList, TouchableOpacity,Image } from "react-native";
 import { Menu } from "../components/Menu";
 import { colors, stylesTexts } from "../style/style";
 import { perfis } from '../api/fakeProfiles';
+import useMenu from "../hooks/useMenu";
 
 interface PropsList{
     id: number;
@@ -11,12 +12,14 @@ interface PropsList{
 }
 
 export function Chat() {
+  const {nav}=useMenu()
 
   function CardChat({perfil}:PropsList){
     
     return(
       <TouchableOpacity
-        style={{flexDirection:'row',padding:10,borderColor:colors.midWhite,borderWidth:1,alignItems:'center'}}
+        onPress={()=>nav.navigate('inChat',perfil)}
+        style={{flexDirection:'row',padding:10,borderColor:colors.midWhite,borderWidth:1,alignItems:'center',margin:2,borderRadius:30}}
       >
         <Image
           style={{height:65,width:65,borderRadius:60}}
@@ -24,7 +27,7 @@ export function Chat() {
         />
         <View style={{marginHorizontal:10}}>
           <Text style={stylesTexts.normal}>{perfil.nome}</Text>
-          <Text style={stylesTexts.normal}>{perfil.nome}</Text>
+          <Text style={stylesTexts.small}>{perfil.nome}</Text>
         </View>
       </TouchableOpacity>
     )
