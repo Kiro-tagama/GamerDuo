@@ -9,7 +9,7 @@ import { useRef } from 'react';
 export function InChat() {
   const {params}=useRoute()
 
-  const flatListRef = useRef();
+  const flatListRef = useRef()
 
   const scrollToBottom = () => {
     if (flatListRef.current) {

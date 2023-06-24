@@ -1,5 +1,5 @@
-import { Text, View,Image } from 'react-native';
-import { stylesHome } from '../style/style';
+import { View,Image } from 'react-native';
+import { stylesHome} from '../style/style';
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
 import { perfis } from '../api/fakeProfiles';
@@ -7,6 +7,7 @@ import { perfis } from '../api/fakeProfiles';
 export function Home() {
 
   const perfil=perfis[0]
+
 
   return (
     <>
@@ -17,11 +18,20 @@ export function Home() {
           source={{uri:'https://img.quizur.com/f/img610bf00c06c710.35752032.png'}}
           />
       </View>
+
       <Card profile={perfil}/>
+      
     </View>
     <Menu/>
     </>
   );
 }
 
+function useSharedValue(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
+
+function withTiming(END_POSITION: number, arg1: { duration: number; }): any {
+  throw new Error('Function not implemented.');
+}
 
