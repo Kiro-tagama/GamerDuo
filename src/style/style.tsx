@@ -97,7 +97,7 @@ export const stylesLogin= StyleSheet.create({
     borderColor: colors.white, 
     borderWidth: 1, 
     marginBottom: 10,
-    backgroundColor:'#00000033',
+    backgroundColor:colors.midBlack,
     borderRadius:30,
     paddingHorizontal:20,
     fontSize:20,
@@ -116,9 +116,44 @@ export const stylesLogin= StyleSheet.create({
   }
 })
 
+export const stylesChat= StyleSheet.create({
+  cardChat:{
+    flexDirection:'row',
+    padding:10,
+    borderColor:colors.midWhite,
+    borderWidth:1,
+    alignItems:'center',
+    marginVertical:5,
+    marginHorizontal:10,
+    borderRadius:30
+  },
+  base:{
+    width:'auto',
+    flexDirection:'row',
+    marginVertical:10,
+    padding:5,
+    justifyContent:'space-between',
+    alignItems:'center',
+    height: 60,
+    borderColor: colors.white, 
+    borderWidth: 1, 
+    backgroundColor:colors.midBlack,
+    borderRadius:30,
+  },
+  bt:{
+    borderColor:colors.white,
+    borderWidth:.5,
+    height:50,
+    width:50,
+    borderRadius:25,
+    justifyContent:'center',
+    alignItems:'center',
+  }
+})
+
 export const stylesTexts = StyleSheet.create({
   h1:{color:colors.white, fontSize: 36, fontWeight: 'bold',margin:2},
   h2:{color:colors.white, fontSize: 24, fontWeight: "500",margin:2},
-  normal:{color:colors.white,fontSize:20,margin:2},
-  small:{color:colors.gray,fontSize:16,margin:2}
+  normal:{color:colors.white,fontSize:16,margin:2},
+  small:{color:colors.gray,fontSize:14,margin:2}
 })

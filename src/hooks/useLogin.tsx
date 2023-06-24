@@ -9,7 +9,7 @@ export function useLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [user,setUser]=useState<any>(mainProfile[0])
+  const [user,setUser]=useState<any>(mainProfile[1])
 
   function handleLogin(){
     if (type == 'login') {

@@ -15,6 +15,69 @@ export const mainProfile=[
     }
 ]
 
+export const conversa= [
+  {
+    "id": 1,
+    "mensagem": "Oi Bob! Como você está?",
+    "data": "2023-06-24",
+    "horario": "10:00"
+  },
+  {
+    "id": 2,
+    "mensagem": "Oi Alice! Estou bem, obrigado. E você?",
+    "data": "2023-06-24",
+    "horario": "10:01"
+  },
+  {
+    "id": 1,
+    "mensagem": "Estou bem também! O que você tem feito de interessante ultimamente?",
+    "data": "2023-06-24",
+    "horario": "10:02"
+  },
+  {
+    "id": 2,
+    "mensagem": "Tenho trabalhado em um novo projeto no meu trabalho. É bem desafiador, mas estou gostando.",
+    "data": "2023-06-24",
+    "horario": "10:03"
+  },
+  {
+    "id": 1,
+    "mensagem": "Que legal! Espero que dê tudo certo para você. Precisamos marcar um café um dia desses para colocarmos o papo em dia.",
+    "data": "2023-06-24",
+    "horario": "10:05"
+  },
+  {
+    "id": 2,
+    "mensagem": "Com certeza! Vamos combinar sim. Seria ótimo nos encontrarmos.",
+    "data": "2023-06-24",
+    "horario": "10:06"
+  },
+  {
+    "id": 1,
+    "mensagem": "Conheci uma nova cafeteria no centro da cidade. Você gostaria de experimentar?",
+    "data": "2023-06-24",
+    "horario": "10:08"
+  },
+  {
+    "id": 2,
+    "mensagem": "Claro, adoro descobrir novos lugares! Quando podemos ir?",
+    "data": "2023-06-24",
+    "horario": "10:09"
+  },
+  {
+    "id": 1,
+    "mensagem": "Que tal na próxima quarta-feira à tarde? Estou livre nesse dia.",
+    "data": "2023-06-24",
+    "horario": "10:11"
+  },
+  {
+    "id": 2,
+    "mensagem": "Perfeito! Vamos marcar para quarta-feira à tarde então. Mal posso esperar para experimentar o café.",
+    "data": "2023-06-24",
+    "horario": "10:13"
+  }
+]
+
 export const perfis= [
     {
       "id": 1,
