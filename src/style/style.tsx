@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform, Dimensions } from 'react-native';
 
 export const colors={
   white:'#eee',
@@ -10,6 +10,16 @@ export const colors={
   green:'#A2EF44',
   red:'#FF8080'
 }
+
+const height = () => {
+  const { width, height } = Dimensions.get('window');
+  switch (true) {
+    case height <= 806:
+      return "74%";
+    default:
+      return "79%";
+  }
+};
 
 export const stylesApp = StyleSheet.create({
   container: {
@@ -30,10 +40,11 @@ export const stylesHome = StyleSheet.create({
   container: {
     padding:10,
     justifyContent:'center',
-    flex:1
+    flex:1,
   },
   card:{
-    height:"90%",
+    height:height(), //variação 78%
+    width:'95.2%',
     borderRadius:30,
     overflow:'hidden',
     justifyContent:'flex-end'

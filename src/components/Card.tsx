@@ -12,7 +12,7 @@ interface Card{
 }
 
 export function Card({profile}:Card){
-  const agent=agents[profile.agentFav] 
+  const agent=agents[profile.agentFav]
   
   return(
     <View style={[stylesHome.card,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>

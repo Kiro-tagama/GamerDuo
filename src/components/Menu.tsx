@@ -6,23 +6,14 @@ import { useLogin } from "../hooks/useLogin";
 
 export function Menu(){
 
-  const {page,active,nav} = useMenu()
+  const {page,active,nav,like,noLike} = useMenu()
   const {user}=useLogin()
-
-  function like(like:'like'|'deslike') {
-
-    if (like === "like") {
-      return
-    }else{
-      return
-    }
-  }
 
   return(
     <View style={{flexDirection:'row',justifyContent:'center', marginVertical:15}}>
       {page == 'home'?
         <TouchableHighlight style={stylesMenu.bt}
-        onPress={()=>like("deslike")}
+        onPress={()=>like()}
         underlayColor="#ff7d63">
           <Feather name="x" size={30} color="#eee" />
         </TouchableHighlight>
@@ -60,7 +51,7 @@ export function Menu(){
       {page == 'home'?
         <TouchableHighlight 
         style={stylesMenu.bt} 
-        onPress={()=>like("like")}
+        onPress={()=>noLike}
         underlayColor="#b2ff6e">
           <Feather name="heart" size={30} color="#eee"/>
         </TouchableHighlight>
