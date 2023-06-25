@@ -4,16 +4,16 @@ import { Feather } from '@expo/vector-icons';
 import useMenu from "../hooks/useMenu";
 import { useLogin } from "../hooks/useLogin";
 
-export function Menu(){
+export function Menu({prop}:any){
 
-  const {page,active,nav,like,noLike} = useMenu()
+  const {page,active,nav,swiperRef} = useMenu()
   const {user}=useLogin()
 
   return(
     <View style={{flexDirection:'row',justifyContent:'center', marginVertical:15}}>
       {page == 'home'?
         <TouchableHighlight style={stylesMenu.bt}
-        onPress={()=>like()}
+        onPress={()=>prop.swipeLeft()}
         underlayColor="#ff7d63">
           <Feather name="x" size={30} color="#eee" />
         </TouchableHighlight>
@@ -51,7 +51,7 @@ export function Menu(){
       {page == 'home'?
         <TouchableHighlight 
         style={stylesMenu.bt} 
-        onPress={()=>noLike}
+        onPress={()=>prop.swipeRight()} //.swipeRight()
         underlayColor="#b2ff6e">
           <Feather name="heart" size={30} color="#eee"/>
         </TouchableHighlight>

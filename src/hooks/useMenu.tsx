@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { colors } from "../style/style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -26,11 +26,8 @@ export default function useMenu() {
     elevation: 4,
   }
 
-  const [iSwipe,setISwipe]=useState(0)
-  const swiperRef = useRef(null);
-
   function like() {
-    swiperRef.current.swipeLeft();
+    console.log('like')
     
   }
   function noLike() {
@@ -39,5 +36,5 @@ export default function useMenu() {
   
 
 
-  return {page,active,nav, swiperRef,like,noLike,iSwipe,setISwipe}
+  return {page,active,nav,like,noLike}
 }

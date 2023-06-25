@@ -1,18 +1,19 @@
-import { View,Image, Button } from 'react-native';
-import { stylesHome} from '../style/style';
+import { View,Image} from 'react-native';
+import { colors, stylesHome} from '../style/style';
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
 import { perfis } from '../api/fakeProfiles';
 import Swiper from 'react-native-deck-swiper';
-import { useRef } from 'react';
 import useMenu from '../hooks/useMenu';
+import React, { useRef } from 'react';
+
 
 export function Home() {
-
-  const perfil=perfis
-
-  const {swiperRef,like,noLike,iSwipe,setISwipe}= useMenu()
   
+  const swiperRef=useRef()
+  const perfil=perfis
+  const {like,noLike}= useMenu()
+
   return (
     <>
     <View style={stylesHome.container}>
@@ -38,22 +39,58 @@ export function Home() {
           verticalSwipe={false}
           
           showSecondCard={true} // funcionan juntos
-          cardIndex={5}
           stackSize={2}
-
           stackScale={16}
 
-          onSwiped={(i)=>setISwipe(i)}
-          cardIndex={iSwipe} // ???
+          onSwipedLeft={()=>noLike()}
+          onSwipedRight={()=>like()}
 
-          onSwipedLeft={()=>console.log("esquerda")}
-          onSwipedRight={()=>{console.log("direita"), like()}}
+          overlayLabels={{
+            left: {
+              title: 'NOPE',
+              style: {
+                label: {
+                  backgroundColor: colors.red,
+                  borderColor: colors.red,
+                  color: colors.white,
+                  borderWidth: 1,
+                  fontSize: 24
+                },
+                wrapper: {
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  justifyContent: 'flex-start',
+                  marginTop: 20,
+                  marginLeft: -20
+                }
+              }
+            },
+            right: {
+              title: 'LIKE',
+              style: {
+                label: {
+                  backgroundColor: colors.green,
+                  borderColor: colors.black,
+                  color: colors.black,
+                  borderWidth: 1,
+                  fontSize: 24
+                },
+                wrapper: {
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  justifyContent: 'flex-start',
+                  marginTop: 20,
+                  marginLeft: 20
+                }
+              }
+            }
+          }}
         />
       </View>
       {/* <Card profile={perfil}/> */}
       
     </View>
-    <Menu/>
+    <Menu prop={swiperRef.current}/>
     </>
   );
 }
