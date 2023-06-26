@@ -6,9 +6,17 @@ interface PropsPage{
   propsPage:'home'|'chat'|'profile'|'inChat'|'login'
 }
 
+interface infoCard{
+  id: number;
+  nome: string;
+  img: string;
+  agentFav: number;
+}
+
 export default function useMenu() {
   const urlPage=useRoute()
 
+  // @ts-ignore
   const [page, setPage]= useState<PropsPage>(urlPage.name)
 
   const nav=useNavigation()
@@ -26,15 +34,12 @@ export default function useMenu() {
     elevation: 4,
   }
 
-  function like() {
-    console.log('like')
-    
+  function like(i:infoCard) {
+    console.log('like\n',i)
   }
-  function noLike() {
-    
+  function noLike(i:infoCard) {
+    console.log('des like\n',i); 
   }
-  
-
 
   return {page,active,nav,like,noLike}
 }

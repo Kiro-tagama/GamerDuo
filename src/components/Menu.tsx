@@ -1,17 +1,18 @@
-import { TouchableHighlight, View, Text, Image } from "react-native";
+import { TouchableHighlight, View, Image } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
 import useMenu from "../hooks/useMenu";
 import { useLogin } from "../hooks/useLogin";
 
 export function Menu({prop}:any){
-
-  const {page,active,nav,swiperRef} = useMenu()
+  const {page,active,nav} = useMenu()
   const {user}=useLogin()
-
+  
   return(
     <View style={{flexDirection:'row',justifyContent:'center', marginVertical:15}}>
-      {page == 'home'?
+      
+      {/* @ts-ignore */
+      page == 'home'?
         <TouchableHighlight style={stylesMenu.bt}
         onPress={()=>prop.swipeLeft()}
         underlayColor="#ff7d63">
@@ -22,22 +23,31 @@ export function Menu({prop}:any){
 
       <View style={stylesMenu.opt}>
         <TouchableHighlight 
-          style={[stylesMenu.opts, page =="home" ? active: null]}
+          style={[stylesMenu.opts, /* @ts-ignore */
+          page == "home" ? active: null]}
           onPress={()=>{
+            /* @ts-ignore */
             nav.navigate('home') 
           }}
           >
-          <Feather name="layers" size={30} color={page == 'home' ? "#222" : "#eeeeeecc"} /></TouchableHighlight>
+            <Feather name="layers" size={30} color={/* @ts-ignore */
+              page == 'home' ? "#222" : "#eeeeeecc"} />
+          </TouchableHighlight>
         <TouchableHighlight 
-          style={[stylesMenu.opts, page =="chat" ? active: null]} 
+          style={[stylesMenu.opts,/* @ts-ignore */
+          page == "chat" ? active: null]} 
           onPress={()=>{
+            /* @ts-ignore */
             nav.navigate('chat')
           }}
           >
-          <Feather name="message-circle" size={30} color={page == 'chat' ? "#222" : "#eeeeeecc"} /></TouchableHighlight>
+          <Feather name="message-circle" size={30} color={/* @ts-ignore */
+          page == 'chat' ? "#222" : "#eeeeeecc"} /></TouchableHighlight>
         <TouchableHighlight 
-          style={[stylesMenu.opts, page =="profile" ? active: null]}
+          style={[stylesMenu.opts,/* @ts-ignore */
+          page == "profile" ? active: null]}
           onPress={()=>{
+            /* @ts-ignore */
             nav.navigate('profile')
           }}
           >
@@ -48,7 +58,8 @@ export function Menu({prop}:any){
           </TouchableHighlight>
       </View>
       
-      {page == 'home'?
+      {/* @ts-ignore */
+      page == 'home'?
         <TouchableHighlight 
         style={stylesMenu.bt} 
         onPress={()=>prop.swipeRight()} //.swipeRight()

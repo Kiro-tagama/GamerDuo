@@ -1,19 +1,19 @@
 import { View,Image} from 'react-native';
-import { colors, stylesHome} from '../style/style';
+import { colors, stylesHome, stylesMenu} from '../style/style';
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
 import { perfis } from '../api/fakeProfiles';
 import Swiper from 'react-native-deck-swiper';
 import useMenu from '../hooks/useMenu';
 import React, { useRef } from 'react';
-
+import { Feather } from '@expo/vector-icons';
 
 export function Home() {
   
   const swiperRef=useRef()
   const perfil=perfis
   const {like,noLike}= useMenu()
-
+  
   return (
     <>
     <View style={stylesHome.container}>
@@ -26,6 +26,7 @@ export function Home() {
 
       <View style={{flex:1,zIndex:10}}>
         <Swiper
+          /* @ts-ignore */
           ref={swiperRef}
           cards={perfil}
           renderCard={(perfil)=> <Card profile={perfil}/>}
@@ -36,18 +37,20 @@ export function Home() {
           backgroundColor='transparent'
           infinite={true} //apagar depois
           outputRotationRange={["0deg","0deg",'0deg']}
-          verticalSwipe={false}
+          //verticalSwipe={false} //habilidatar ou deixar desabilitado? (ele pode evitar erros habilitado)
           
           showSecondCard={true} // funcionan juntos
           stackSize={2}
           stackScale={16}
 
-          onSwipedLeft={()=>noLike()}
-          onSwipedRight={()=>like()}
+          onSwipedLeft={(i,card)=>noLike(card)}
+          onSwipedRight={(i,card)=>like(card)}
 
           overlayLabels={{
             left: {
-              title: 'NOPE',
+              element:<View style={[stylesMenu.bt,{backgroundColor:colors.black}]}>
+                        <Feather name="x" size={30} color={colors.red}  />
+                      </View>,
               style: {
                 label: {
                   backgroundColor: colors.red,
@@ -61,20 +64,15 @@ export function Home() {
                   alignItems: 'flex-end',
                   justifyContent: 'flex-start',
                   marginTop: 20,
-                  marginLeft: -20
+                  marginLeft: -40
                 }
               }
             },
             right: {
-              title: 'LIKE',
+              element:<View style={[stylesMenu.bt,{backgroundColor:colors.black}]}>
+                        <Feather name="heart" size={30} color={colors.green}  />
+                      </View>,
               style: {
-                label: {
-                  backgroundColor: colors.green,
-                  borderColor: colors.black,
-                  color: colors.black,
-                  borderWidth: 1,
-                  fontSize: 24
-                },
                 wrapper: {
                   flexDirection: 'column',
                   alignItems: 'flex-start',
