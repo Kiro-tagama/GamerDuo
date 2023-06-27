@@ -19,6 +19,7 @@ export function CardChat({perfil}:PropsList){
 
   return(
     <TouchableOpacity
+      // @ts-ignore
       onPress={()=>nav.navigate('inChat',perfil)}
       style={stylesChat.cardChat}
     >

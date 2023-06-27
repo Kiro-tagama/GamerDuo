@@ -26,7 +26,10 @@ export function MenuInChat({params}:PropsParams){
         <AntDesign name="left" size={24} color={colors.white} style={{marginRight:5}}/>
       </TouchableHighlight>
       <Text style={stylesTexts.normal}>{params.nome}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity
+        // @ts-ignore 
+        onPress={()=>nav.navigate('profile',params)}
+      >
         <Image
           source={{uri:params.img}}
           style={{width:50,height:50,borderRadius:30}}

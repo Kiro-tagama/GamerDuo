@@ -53,7 +53,7 @@ export function Menu({prop}:any){
           >
             <Image
               style={{width:'90%',height:'90%',borderRadius:30}}
-              source={{uri:user.imgProfile}}
+              source={{uri:user.img}}
             />
           </TouchableHighlight>
       </View>

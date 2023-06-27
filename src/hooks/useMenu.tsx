@@ -3,7 +3,7 @@ import { colors } from "../style/style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 interface PropsPage{
-  propsPage:'home'|'chat'|'profile'|'inChat'|'login'
+  name:'home'|'chat'|'profile'|'inChat'|'login'
 }
 
 interface infoCard{
@@ -15,7 +15,6 @@ interface infoCard{
 
 export default function useMenu() {
   const urlPage=useRoute()
-
   // @ts-ignore
   const [page, setPage]= useState<PropsPage>(urlPage.name)
 
@@ -34,6 +33,8 @@ export default function useMenu() {
     elevation: 4,
   }
 
+  const [swiperRef, setSwiperRef] = useState<any>();
+
   function like(i:infoCard) {
     console.log('like\n',i)
   }
@@ -41,5 +42,5 @@ export default function useMenu() {
     console.log('des like\n',i); 
   }
 
-  return {page,active,nav,like,noLike}
+  return {page,active,nav,like,noLike,swiperRef, setSwiperRef}
 }

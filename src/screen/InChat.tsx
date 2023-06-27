@@ -13,15 +13,19 @@ export function InChat() {
 
   const scrollToBottom = () => {
     if (flatListRef.current) {
+      //@ts-ignore
       flatListRef.current.scrollToEnd({ index: conversa.length - 1, animated: true });
     }
   };
 
   return(
     <View style={{flex:1,marginHorizontal:10}}>
-      <MenuInChat params={params}/>
+      <MenuInChat 
+      //@ts-ignore
+      params={params}/>
       <View style={{flex:1}}>
         <FlatList
+          //@ts-ignore
           ref={flatListRef}
           data={conversa}
           renderItem={({item}) => <Mensagem mensagem={item} user={1}/>}

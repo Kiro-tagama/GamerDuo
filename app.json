@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "GamerDuo",
-    "slug": "GamerDuo",
+    "slug": "gamerduo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#222"
-      }
+      },
+      "package": "com.kirotagama.gamerduo"
     },
     "web": {
       "favicon": "./assets/min-icon-2x.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "142717a3-e41a-44d9-bcd1-e7b2069ba4a8"
+      }
+    },
+    "owner": "kirotagama",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/142717a3-e41a-44d9-bcd1-e7b2069ba4a8"
     }
   }
 }

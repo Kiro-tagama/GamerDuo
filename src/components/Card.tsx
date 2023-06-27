@@ -27,7 +27,7 @@ export function Card({profile}:Card){
           <Image
             style={stylesHome.cardImg}
             source={{uri:profile.img}}
-            />
+          />
           <View style={{padding:10,flex:1,margin:3}}>
             <Text style={stylesTexts.normal}>{profile.nome}</Text>
             <Text style={stylesTexts.normal}>{profile.id}</Text>

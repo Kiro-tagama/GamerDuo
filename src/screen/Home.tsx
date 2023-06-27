@@ -5,15 +5,12 @@ import { Menu } from '../components/Menu';
 import { perfis } from '../api/fakeProfiles';
 import Swiper from 'react-native-deck-swiper';
 import useMenu from '../hooks/useMenu';
-import React, { useRef } from 'react';
 import { Feather } from '@expo/vector-icons';
 
 export function Home() {
-  
-  const swiperRef=useRef()
   const perfil=perfis
-  const {like,noLike}= useMenu()
-  
+  const {like,noLike,setSwiperRef,swiperRef}= useMenu()
+
   return (
     <>
     <View style={stylesHome.container}>
@@ -26,8 +23,8 @@ export function Home() {
 
       <View style={{flex:1,zIndex:10}}>
         <Swiper
-          /* @ts-ignore */
-          ref={swiperRef}
+          ref={ref => setSwiperRef(ref)}
+
           cards={perfil}
           renderCard={(perfil)=> <Card profile={perfil}/>}
           keyExtractor={(data:any)=> data.id}
@@ -85,10 +82,9 @@ export function Home() {
           }}
         />
       </View>
-      {/* <Card profile={perfil}/> */}
       
     </View>
-    <Menu prop={swiperRef.current}/>
+    <Menu prop={swiperRef}/>
     </>
   );
 }

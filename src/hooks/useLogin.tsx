@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { mainProfile } from "../api/fakeProfiles";
-import { useNavigation } from "@react-navigation/native";
 
 export function useLogin() {
   
