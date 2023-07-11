@@ -15,12 +15,12 @@ O GamerDuo é um aplicativo mobile desenvolvido utilizando React Native, projeta
 
 Android
 
-![Android](https://file.notion.so/f/s/421447db-4c12-48cf-9f06-775cb2c05083/Untitled.png?id=2525d516-d036-43b2-86cb-a68798956067&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1688068800000&signature=jO4tTzmf6B968UzBThvQq4hZFNUgOYR3CJDpOxogh5E&downloadName=Untitled.png)
+![Android](https://kiro-tagama.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F421447db-4c12-48cf-9f06-775cb2c05083%2FUntitled.png?id=2525d516-d036-43b2-86cb-a68798956067&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&width=600&userId=&cache=v2)
 
 ---
 IOS
 
-![IOS](https://file.notion.so/f/s/94809999-f359-4822-820a-e92a3cf86dfa/Untitled.png?id=fdb5893d-5c08-4b72-a209-3cdba9d07109&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1688068800000&signature=HS97hLXDVzEw9rkGQImFgE7rBaRbPLDme_Ztewb5W6k&downloadName=Untitled.png)
+![IOS](https://kiro-tagama.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F94809999-f359-4822-820a-e92a3cf86dfa%2FUntitled.png?id=fdb5893d-5c08-4b72-a209-3cdba9d07109&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&width=600&userId=&cache=v2)
 
 
 
