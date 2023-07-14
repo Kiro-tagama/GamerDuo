@@ -1,15 +1,16 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
 import { Menu } from "../components/Menu";
 import { useLogin } from "../hooks/useLogin";
-import { colors, stylesChat, stylesTexts } from "../style/style";
+import { stylesChat, stylesTexts } from "../style/style";
 import { PerfilCards } from "../components/PerfilCards";
 import { useRoute } from "@react-navigation/native";
+import { colors } from "../style/theme";
+import { useContext } from "react";
+import { ContextArea } from "../firebase/ContextoProvider";
 
 export function Profile() {
-  const {user}=useLogin()
+  const {user}=useContext(ContextArea)
   const {params}=useRoute()
-  console.log(user);
-  
   
   const data= params== null ? user:params
 

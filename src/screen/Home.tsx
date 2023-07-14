@@ -1,5 +1,5 @@
 import { View,Image} from 'react-native';
-import { colors, stylesHome, stylesMenu} from '../style/style';
+import { stylesHome, stylesMenu} from '../style/style';
 
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
@@ -10,6 +10,7 @@ import Swiper from 'react-native-deck-swiper';
 import useMenu from '../hooks/useMenu';
 
 import { Feather } from '@expo/vector-icons';
+import { colors } from '../style/theme';
 
 export function Home() {
   const perfil=perfis
@@ -26,9 +27,10 @@ export function Home() {
       </View>
 
       <View style={{flex:1,zIndex:10}}>
+        {
+          // @ts-ignore
         <Swiper
           ref={ref => setSwiperRef(ref)}
-
           cards={perfil}
           renderCard={(perfil)=> <Card profile={perfil}/>}
           keyExtractor={(data:any)=> data.id}
@@ -44,7 +46,9 @@ export function Home() {
           stackSize={2}
           stackScale={16}
 
+          //@ts-ignore na liby n existe o segundo parametro então
           onSwipedLeft={(i,card)=>noLike(card)}
+          //@ts-ignore
           onSwipedRight={(i,card)=>like(card)}
 
           overlayLabels={{
@@ -85,6 +89,7 @@ export function Home() {
             }
           }}
         />
+        }
       </View>
       
     </View>

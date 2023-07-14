@@ -1,5 +1,6 @@
 import { View,Text } from "react-native"
-import { colors, stylesTexts } from "../style/style"
+import { stylesTexts } from "../style/style"
+import { colors } from "../style/theme";
 
 interface PropsMensagem{
   mensagem:{

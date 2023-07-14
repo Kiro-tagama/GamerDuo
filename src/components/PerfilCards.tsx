@@ -1,7 +1,8 @@
 import { View, Image, Text, TouchableHighlight } from "react-native"
 import { agents } from "../api/valorantApi"
-import { colors, stylesChat, stylesTexts } from "../style/style"
+import { stylesChat, stylesTexts } from "../style/style"
 import { Feather } from "@expo/vector-icons";
+import { colors } from "../style/theme";
 
 export function PerfilCards({user}:any) {
   const agent=agents[0]

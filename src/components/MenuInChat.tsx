@@ -1,7 +1,8 @@
 import { Text, View, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { colors, stylesChat, stylesTexts } from '../style/style';
+import { stylesChat, stylesTexts } from '../style/style';
 import useMenu from '../hooks/useMenu';
 import { AntDesign } from '@expo/vector-icons';
+import { colors } from '../style/theme';
 
 interface PropsParams{
   params:{

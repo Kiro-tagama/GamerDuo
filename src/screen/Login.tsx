@@ -1,6 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { colors, stylesLogin, stylesTexts } from '../style/style';
+import { stylesLogin, stylesTexts } from '../style/style';
 import { useLogin } from '../hooks/useLogin';
+import { colors } from '../style/theme';
 
 export function Login() {
   const {type, name, setName, email, setEmail,

@@ -1,7 +1,8 @@
 import { Text, View, TextInput, TouchableHighlight } from 'react-native';
-import { colors, stylesChat } from '../style/style';
+import { stylesChat } from '../style/style';
 import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
+import { colors } from '../style/theme';
 
 export function InputInChat() {
   const [txt,setTxt]=useState('')

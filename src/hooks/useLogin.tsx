@@ -1,23 +1,20 @@
 import { useContext, useState } from "react";
-import { mainProfile } from "../api/fakeProfiles";
 import { ContextArea } from "../firebase/ContextoProvider";
-import { createAcount } from "../firebase/useAuth";
 
 export function useLogin() {
-  
+  const {createAcount,loginAcount}=useContext(ContextArea)
+
   const [type, setType] = useState('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  const [user,setUser]=useState<any>(mainProfile[0])
-
   function handleLogin(){
     if (type == 'login') {
       console.log('logar');
+      loginAcount(email,password)
     } else {
-      console.log('cadartra');
+      console.log('cadastra');
       createAcount(name,email,password)
     }
   }
@@ -31,7 +28,7 @@ export function useLogin() {
   }
 
   return {
-    type, user,
+    type,
     name, setName,
     email, setEmail,
     password, setPassword,

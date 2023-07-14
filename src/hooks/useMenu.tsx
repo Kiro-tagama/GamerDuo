@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { colors } from "../style/style";
+import { colors } from "../style/theme";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 interface PropsPage{

@@ -2,11 +2,12 @@ import { TouchableHighlight, View, Image } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
 import useMenu from "../hooks/useMenu";
-import { useLogin } from "../hooks/useLogin";
+import { useContext } from "react";
+import { ContextArea } from "../firebase/ContextoProvider";
 
 export function Menu({prop}:any){
   const {page,active,nav} = useMenu()
-  const {user}=useLogin()
+  const {user}=useContext(ContextArea)
   
   return(
     <View style={{flexDirection:'row',justifyContent:'center', marginVertical:15}}>

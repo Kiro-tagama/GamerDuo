@@ -5,12 +5,14 @@ import { Home } from "../screen/Home"
 import { Chat } from "../screen/Chat"
 import { InChat } from "../screen/InChat"
 import { Profile } from "../screen/Profile"
-import { useLogin } from "../hooks/useLogin"
+import { useContext } from "react"
+
+import {ContextArea} from '../firebase/ContextoProvider'
 
 const Stack= createNativeStackNavigator()
 
 function Router() {
-  const {user}=useLogin()
+  const {user}=useContext(ContextArea)
   
   return(
     <Stack.Navigator screenOptions={{headerShown:false}}>
