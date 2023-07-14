@@ -15,12 +15,12 @@ O GamerDuo é um aplicativo mobile desenvolvido utilizando React Native, projeta
 
 Android
 
-![Android](https://file.notion.so/f/s/421447db-4c12-48cf-9f06-775cb2c05083/Untitled.png?id=2525d516-d036-43b2-86cb-a68798956067&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1688068800000&signature=jO4tTzmf6B968UzBThvQq4hZFNUgOYR3CJDpOxogh5E&downloadName=Untitled.png)
+![Android](https://file.notion.so/f/s/421447db-4c12-48cf-9f06-775cb2c05083/Untitled.png?id=2525d516-d036-43b2-86cb-a68798956067&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1689184800000&signature=ocglh1-O7AYgljm80tU5ysKi71nVcaFvPG6FpKX0B6M&downloadName=Untitled.png)
 
 ---
 IOS
 
-![IOS](https://file.notion.so/f/s/94809999-f359-4822-820a-e92a3cf86dfa/Untitled.png?id=fdb5893d-5c08-4b72-a209-3cdba9d07109&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1688068800000&signature=HS97hLXDVzEw9rkGQImFgE7rBaRbPLDme_Ztewb5W6k&downloadName=Untitled.png)
+![IOS](https://file.notion.so/f/s/94809999-f359-4822-820a-e92a3cf86dfa/Untitled.png?id=fdb5893d-5c08-4b72-a209-3cdba9d07109&table=block&spaceId=b87cb80b-506e-460d-85bf-8d0d3d582f85&expirationTimestamp=1689184800000&signature=pMSV9BeqDpeT_l9qUdragjtZ6kkULi37J6KnSahUtF8&downloadName=Untitled.png)
 
 
 
