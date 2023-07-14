@@ -5,12 +5,10 @@ import {  stylesApp } from './src/style/style';
 import { NavigationContainer, DarkTheme, DefaultTheme, useTheme } from '@react-navigation/native';
 import { Router } from './src/global/Route';
 import { ContextProvider } from './src/firebase/ContextoProvider';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {API_URL} from "@env"
 
 export default function App() {
   const scheme = useColorScheme()
-  console.log(API_URL);
+console.log(scheme);
   
   return (
     <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>

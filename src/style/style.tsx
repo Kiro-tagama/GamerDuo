@@ -1,13 +1,12 @@
-import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
 export const colors={
   white:'#eee',
   black:'#222',
   gray:'#666',
-  midWhite:'#eeeeee33',
-  midBlack:'#00000033',
-  midGray:'#66666633',
+  midWhite:'#eee3',
+  midBlack:'#0003',
+  midGray:'#6663',
   green:'#A2EF44',
   red:'#FF8080'
 }
