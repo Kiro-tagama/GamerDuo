@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
 export const colors={
@@ -24,7 +25,6 @@ const height = () => {
 export const stylesApp = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black,
     ...Platform.select({
       android:{
         paddingTop:30

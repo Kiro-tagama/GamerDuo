@@ -8,11 +8,10 @@ import { useRoute } from "@react-navigation/native";
 export function Profile() {
   const {user}=useLogin()
   const {params}=useRoute()
+  console.log(user);
+  
   
   const data= params== null ? user:params
-
-  console.log(params);
-  
 
   return(
     <>

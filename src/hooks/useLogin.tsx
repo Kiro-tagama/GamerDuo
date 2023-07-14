@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { mainProfile } from "../api/fakeProfiles";
+import { ContextArea } from "../firebase/ContextoProvider";
+import { createAcount } from "../firebase/useAuth";
 
 export function useLogin() {
   
@@ -8,15 +10,15 @@ export function useLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
   const [user,setUser]=useState<any>(mainProfile[0])
 
   function handleLogin(){
     if (type == 'login') {
       console.log('logar');
-      {email=="0"?setUser(mainProfile[0]):setUser(mainProfile[1])}
-
     } else {
       console.log('cadartra');
+      createAcount(name,email,password)
     }
   }
 

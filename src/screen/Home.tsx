@@ -1,10 +1,14 @@
 import { View,Image} from 'react-native';
 import { colors, stylesHome, stylesMenu} from '../style/style';
+
 import { Card } from '../components/Card';
 import { Menu } from '../components/Menu';
+
 import { perfis } from '../api/fakeProfiles';
 import Swiper from 'react-native-deck-swiper';
+
 import useMenu from '../hooks/useMenu';
+
 import { Feather } from '@expo/vector-icons';
 
 export function Home() {
@@ -34,7 +38,7 @@ export function Home() {
           backgroundColor='transparent'
           infinite={true} //apagar depois
           outputRotationRange={["0deg","0deg",'0deg']}
-          //verticalSwipe={false} //habilidatar ou deixar desabilitado? (ele pode evitar erros habilitado)
+          verticalSwipe={false} //habilidatar ou deixar desabilitado? (ele pode evitar erros habilitado)
           
           showSecondCard={true} // funcionan juntos
           stackSize={2}
