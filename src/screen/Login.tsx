@@ -26,11 +26,13 @@ export function Login() {
         onChangeText={text => setEmail(text)}
         value={email}
         placeholderTextColor={colors.gray}
+        keyboardType="email-address"
       />
       <TextInput
         style={stylesLogin.input}
         placeholder="Senha"
         secureTextEntry
+        textContentType='password'
         onChangeText={text => setPassword(text)}
         value={password}
         placeholderTextColor={colors.gray}

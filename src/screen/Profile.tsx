@@ -1,6 +1,5 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
 import { Menu } from "../components/Menu";
-import { useLogin } from "../hooks/useLogin";
 import { stylesChat, stylesTexts } from "../style/style";
 import { PerfilCards } from "../components/PerfilCards";
 import { useRoute } from "@react-navigation/native";
@@ -9,25 +8,32 @@ import { useContext } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
 
 export function Profile() {
+  // @ts-ignore
   const {user}=useContext(ContextArea)
   const {params}=useRoute()
+
+  console.log(user);
   
-  const data= params== null ? user:params
+  
+  const data= params == null || params.id == user.id ? user: params 
 
   return(
     <>
       <View style={{flex:1, alignItems:'center'}}>
-        <Image
+        {data.img?
+          <Image
           source={{uri:data.img}}
           style={{height:100,width:100,borderColor:colors.white,borderWidth:2,borderRadius:50,margin:10,marginTop:40}}
-        />
-        <Text style={stylesTexts.h2}>{data.nome}</Text>
+          />
+          : null
+        }
+        <Text style={stylesTexts.h2}>{data.name}</Text>
 
         <View style={{margin:20}}/>
 
-        <PerfilCards user={data}/>
+        <PerfilCards cardData={data}/>
         
-        {data.id == 1 ?
+        { params == null||params.id == user.id ?
           <TouchableHighlight
             style={[stylesChat.cardChat,{width:'90%',justifyContent:'center',alignItems:'center',padding:0}]}
             underlayColor={colors.white}

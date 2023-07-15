@@ -1,4 +1,4 @@
-import { TouchableHighlight, View, Image } from "react-native";
+import { TouchableHighlight, View, Image, Text } from "react-native";
 import { stylesMenu } from "../style/style";
 import { Feather } from '@expo/vector-icons';
 import useMenu from "../hooks/useMenu";
@@ -52,10 +52,14 @@ export function Menu({prop}:any){
             nav.navigate('profile')
           }}
           >
-            <Image
+            {user.img?
+              <Image
               style={{width:'90%',height:'90%',borderRadius:30}}
               source={{uri:user.img}}
-            />
+              />
+              :
+              <Feather name="user" size={30} color={page == 'profile' ? "#222" : "#eeeeeecc"} />
+            }
           </TouchableHighlight>
       </View>
       

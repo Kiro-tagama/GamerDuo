@@ -3,10 +3,12 @@ import { agents } from "../api/valorantApi"
 import { stylesChat, stylesTexts } from "../style/style"
 import { Feather } from "@expo/vector-icons";
 import { colors } from "../style/theme";
+import { useContext } from "react";
+import { ContextArea } from "../firebase/ContextoProvider";
 
-export function PerfilCards({user}:any) {
+export function PerfilCards({cardData}:any) {
+  const {user}=useContext(ContextArea)
   const agent=agents[0]
-  let data=user.id
 
   return(
     <View style={[stylesChat.cardChat,{width:'90%'}]}>
@@ -26,7 +28,7 @@ export function PerfilCards({user}:any) {
         </View>
       </View>
       
-      {data == 1 ?
+      { cardData.id == user.id ?
         <TouchableHighlight
           style={{position:"absolute",right:-5,top:-5}}
         >
