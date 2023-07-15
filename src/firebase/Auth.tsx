@@ -14,7 +14,6 @@ export function Auth() {
     .then(async (user)=>{
     const data = user.user
     console.log(data.uid);
-  
       try{
         const userRef = doc(collection(db, "users"), data.uid)
         const docRef = await setDoc(userRef,

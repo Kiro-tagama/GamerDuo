@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
 
 export function useLogin() {
+  // @ts-ignore
   const {createAcount,loginAcount}=useContext(ContextArea)
 
   const [type, setType] = useState('login');

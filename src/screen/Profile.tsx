@@ -7,14 +7,11 @@ import { colors } from "../style/theme";
 import { useContext } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
 
-export function Profile() {
+export function Profile(){
   // @ts-ignore
   const {user}=useContext(ContextArea)
   const {params}=useRoute()
-
-  console.log(user);
-  
-  
+  // @ts-ignore
   const data= params == null || params.id == user.id ? user: params 
 
   return(
@@ -33,7 +30,8 @@ export function Profile() {
 
         <PerfilCards cardData={data}/>
         
-        { params == null||params.id == user.id ?
+        { // @ts-ignore
+        params == null||params.id == user.id ?
           <TouchableHighlight
             style={[stylesChat.cardChat,{width:'90%',justifyContent:'center',alignItems:'center',padding:0}]}
             underlayColor={colors.white}

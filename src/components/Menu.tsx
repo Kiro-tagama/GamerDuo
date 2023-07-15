@@ -7,6 +7,8 @@ import { ContextArea } from "../firebase/ContextoProvider";
 
 export function Menu({prop}:any){
   const {page,active,nav} = useMenu()
+
+  // @ts-ignore
   const {user}=useContext(ContextArea)
   
   return(
@@ -58,7 +60,8 @@ export function Menu({prop}:any){
               source={{uri:user.img}}
               />
               :
-              <Feather name="user" size={30} color={page == 'profile' ? "#222" : "#eeeeeecc"} />
+              <Feather name="user" size={30} color={/* @ts-ignore */
+              page == "profile" ? "#222" : "#eeeeeecc"} />
             }
           </TouchableHighlight>
       </View>
