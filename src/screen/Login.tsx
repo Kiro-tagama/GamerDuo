@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View,Text, TextInput, TouchableOpacity } from 'react-native';
 import { stylesLogin, stylesTexts } from '../style/style';
 import { useLogin } from '../hooks/useLogin';
 import { colors } from '../style/theme';

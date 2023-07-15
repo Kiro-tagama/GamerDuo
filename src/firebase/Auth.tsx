@@ -1,13 +1,23 @@
 import { Firebase } from "./Firebase"
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import { addDoc, collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
-import { useState } from "react"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from 'firebase/auth'
+import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import { useEffect, useState } from "react"
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const auth = getAuth(Firebase)
 const db = getFirestore(Firebase)
 
 export function Auth() {
   const [user,setUser]=useState<any>()
+
+  useEffect(()=>{
+    async function StoregeUser() {
+      const storageUser = await AsyncStorage.getItem("dataUser")
+      storageUser ? setUser(JSON.parse(storageUser)) : null
+    }
+    StoregeUser()
+  },[])
   
   function createAcount(name:string,email:string,pass:string) {
     createUserWithEmailAndPassword(auth, email, pass)
@@ -30,7 +40,7 @@ export function Auth() {
               {"id":3,"consta":false,"name":"psn"},
             ]
           }
-        )
+        ).then(()=>loginAcount(email,pass))
       } catch(e){
         console.error(e)
       }
@@ -50,7 +60,8 @@ export function Auth() {
         const userDoc = await getDoc(doc(db, "users", data.uid));
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          setUser(userData); // Atualize sua função setUser para definir os dados do usuário
+          await AsyncStorage.setItem("dataUser", JSON.stringify(userData))
+          setUser(userData)
         } else {
           console.log("Usuário não encontrado no Firestore");
         }
@@ -66,5 +77,17 @@ export function Auth() {
     })
   }
 
-  return {loginAcount,createAcount,user}
+  async function deslog() {
+    await signOut(auth)
+  
+    await AsyncStorage.clear()
+    .then(()=>{
+      setUser(null)
+    })
+    .catch(err=>console.log(err))
+    
+    console.log('saiu');
+  }
+
+  return {loginAcount,createAcount,deslog,user}
 }
