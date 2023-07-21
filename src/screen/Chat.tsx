@@ -2,7 +2,7 @@ import { Text, View, FlatList} from "react-native";
 import { Menu } from "../components/Menu";
 import { stylesTexts } from "../style/style";
 import { perfis } from '../api/fakeProfiles';
-import { CardChat } from "../components/CardChat";
+import { ChatCard } from "../components/chat/ChatCard";
 
 export function Chat() {
 
@@ -14,7 +14,10 @@ export function Chat() {
       </Text>
       <FlatList
         data={perfis}
-        renderItem={({item}) => <CardChat perfil={item}/>}
+        renderItem={({item}) =>{
+          // @ts-ignore
+          return <ChatCard perfil={item}/>
+        }}
         keyExtractor={(item:any) => item.id}
         showsVerticalScrollIndicator={false}
       />

@@ -1,10 +1,10 @@
 import { View, FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { MenuInChat } from '../components/MenuInChat';
-import { InputInChat } from '../components/InputInChat';
 import { conversa } from '../api/fakeProfiles';
-import { Mensagem } from '../components/Mensagem';
 import { useRef } from 'react';
+import { Mensagem } from '../components/chat/Mensagem';
+import { InputInChat } from '../components/chat/InputInChat';
 
 export function InChat() {
   const {params}=useRoute()

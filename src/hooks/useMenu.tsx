@@ -7,7 +7,7 @@ interface PropsPage{
 }
 
 interface infoCard{
-  id: number;
+  id: string;
   nome: string;
   img: string;
   agentFav: number;

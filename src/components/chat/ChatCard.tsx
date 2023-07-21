@@ -1,7 +1,7 @@
 import { TouchableOpacity, Image, View, Text } from "react-native";
-import { stylesChat, stylesTexts } from "../style/style";
-import useMenu from "../hooks/useMenu";
-import { conversa } from "../api/fakeProfiles";
+import { stylesChat, stylesTexts } from "../../style/style";
+import useMenu from "../../hooks/useMenu";
+import { conversa } from "../../api/fakeProfiles";
 
 interface PropsList{
   perfil:{
@@ -12,7 +12,7 @@ interface PropsList{
   }
 }
 
-export function CardChat({perfil}:PropsList){
+export function ChatCard({perfil}:PropsList){
   const {nav}=useMenu()
 
   var txt =conversa[conversa.length-1].mensagem 
