@@ -94,6 +94,8 @@ export const stylesLogin= StyleSheet.create({
   input:{
     height: 60, 
     width: '90%', 
+    flexDirection:"row",
+    alignItems:"center",
     borderColor: colors.white, 
     borderWidth: 1, 
     marginBottom: 10,

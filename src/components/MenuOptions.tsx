@@ -76,7 +76,7 @@ export function MenuOptions() {
       animationType='fade'
     >
       <TouchableOpacity 
-        style={{flex:1,justifyContent:'flex-end',marginBottom:70}} 
+        style={{flex:1,justifyContent:'flex-end',paddingBottom:75}} 
         onPress={()=>setModal(false)}>
           <View style={{gap:10,padding:10,flexDirection:'row',justifyContent:'center',marginLeft:'auto',width:"74%"}}>
             <TouchableOpacity 

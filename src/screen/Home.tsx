@@ -1,20 +1,33 @@
-import { View,Image} from 'react-native';
+import { View,Image, ActivityIndicator} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { stylesHome, stylesMenu} from '../style/style';
 
-import { Card } from '../components/Card';
+import { Card } from '../components/Home/Card';
 import { Menu } from '../components/Menu';
 
-import { perfis } from '../api/fakeProfiles';
 import Swiper from 'react-native-deck-swiper';
 
 import useMenu from '../hooks/useMenu';
 
 import { Feather } from '@expo/vector-icons';
 import { colors } from '../style/theme';
+import { useContext, useEffect, useState } from 'react';
+import { getAlluser } from '../api/api';
+import { ContextArea } from '../firebase/ContextoProvider';
 
 export function Home() {
-  const perfil=perfis
+  const {user}=useContext(ContextArea)
+  
   const {like,noLike,setSwiperRef,swiperRef}= useMenu()
+  
+  const [perfil,setPerfil]=useState<any>(null)
+
+  useEffect(()=>{
+    async function data(){
+      setPerfil(await getAlluser(user.id))
+    }
+    data()
+  },[perfil<2])
 
   return (
     <>
@@ -27,8 +40,17 @@ export function Home() {
       </View>
 
       <View style={{flex:1,zIndex:10}}>
-        {
-          // @ts-ignore
+        {perfil == null ?
+        <View style={[stylesHome.card,{height:"100%",width:"100%",justifyContent:'center'}]}>
+          <LinearGradient
+            colors={[colors.white,colors.black]}
+            locations={[0.1,1]}
+            style={{flex:1,justifyContent:'center'}}
+          >
+            <ActivityIndicator size={100} color={"#222"}/>
+          </LinearGradient>
+        </View>:
+        // @ts-ignore
         <Swiper
           ref={ref => setSwiperRef(ref)}
           cards={perfil}

@@ -49,6 +49,7 @@ export function Auth() {
       console.log('err ao criar conta:')
       console.log(err.code)
       console.log(err.message)
+      return
     })
   }
 
@@ -73,7 +74,7 @@ export function Auth() {
       console.log('err ao logar conta:')
       console.log(err.code)
       console.log(err.message)
-      debugger
+      return
     })
   }
 

@@ -1,10 +1,11 @@
-import { View,Text, TextInput, TouchableOpacity } from 'react-native';
+import { View,Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { stylesLogin, stylesTexts } from '../style/style';
 import { useLogin } from '../hooks/useLogin';
 import { colors } from '../style/theme';
+import { Feather } from '@expo/vector-icons';
 
 export function Login() {
-  const {type, name, setName, email, setEmail,
+  const {type, name, setName, email, setEmail, anime, viewPass, setViewPass,
     password, setPassword, handleLogin, handleType}=useLogin()
 
   return (
@@ -28,20 +29,32 @@ export function Login() {
         placeholderTextColor={colors.gray}
         keyboardType="email-address"
       />
-      <TextInput
-        style={stylesLogin.input}
-        placeholder="Senha"
-        secureTextEntry
-        textContentType='password'
-        onChangeText={text => setPassword(text)}
-        value={password}
-        placeholderTextColor={colors.gray}
-      />
+      <View style={stylesLogin.input}>
+        <TextInput
+          style={{fontSize:20,color:colors.white,flex:1}}
+          placeholder="Senha"
+          textContentType='password'
+          onChangeText={text => setPassword(text)}
+          value={password}
+          placeholderTextColor={colors.gray}
+          secureTextEntry={viewPass}
+        />
+        <TouchableOpacity
+          onPress={()=>setViewPass(!viewPass)}
+          style={{marginLeft:5}}
+        >
+          {viewPass?
+            <Feather name="eye" size={24} color="#eee" />:
+            <Feather name="eye-off" size={24} color="#eee" />
+          }
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity
         style={[stylesLogin.bt,{margin:30}]}
         onPress={handleLogin}
       >
-        <Text style={[stylesTexts.h2,{color:colors.black}]}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>
+        {anime? <ActivityIndicator size="large" color="#000000"/>:
+        <Text style={[stylesTexts.h2,{color:colors.black}]}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>}
       </TouchableOpacity>
 
       

@@ -5,18 +5,25 @@ export function useLogin() {
   // @ts-ignore
   const {createAcount,loginAcount}=useContext(ContextArea)
 
-  const [type, setType] = useState('login');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [type, setType] = useState('login')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const [anime, setAnime] = useState(false)
+  const [viewPass, setViewPass] = useState(true)
 
   function handleLogin(){
     if (type == 'login') {
       console.log('logar');
-      loginAcount(email,password)
+      setAnime(true)
+        loginAcount(email,password)
+      setAnime(false)
     } else {
       console.log('cadastra');
-      createAcount(name,email,password)
+      setAnime(true)
+        createAcount(name,email,password)
+      setAnime(false)
     }
   }
 
@@ -33,6 +40,8 @@ export function useLogin() {
     name, setName,
     email, setEmail,
     password, setPassword,
-    handleLogin, handleType
+    handleLogin, handleType,
+    anime,
+    viewPass, setViewPass
   }
 }
