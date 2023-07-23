@@ -1,13 +1,15 @@
 import { View, Image, Text, TouchableHighlight } from "react-native"
 import { agents } from "../api/valorantApi"
-import { stylesChat, stylesTexts } from "../style/style"
 import { Feather } from "@expo/vector-icons";
 import { colors } from "../style/theme";
 import { useContext } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
+import { useStyle } from "../style/style";
 
 export function PerfilCards({cardData}:any) {
+  // @ts-ignore
   const {user}=useContext(ContextArea)
+  const { stylesChat, stylesTexts } =useStyle()
   const agent=agents[0]
 
   return(
@@ -30,9 +32,15 @@ export function PerfilCards({cardData}:any) {
       
       { cardData.id == user.id ?
         <TouchableHighlight
-          style={{position:"absolute",right:-5,top:-5}}
+          style={{
+            position:"absolute",
+            right:-10,top:-15,
+            backgroundColor:stylesChat.mensagem.backgroundColor,
+            padding:5,
+            borderRadius:5
+          }}
         >
-          <Feather name="edit" size={24} color={colors.white} />
+          <Feather name="edit" size={24} color={stylesChat.mensagem.color} />
         </TouchableHighlight>
         :null
       }

@@ -1,6 +1,6 @@
 import { View, FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { MenuInChat } from '../components/MenuInChat';
+import { MenuInChat } from '../components/chat/MenuInChat';
 import { conversa } from '../api/fakeProfiles';
 import { useRef } from 'react';
 import { Mensagem } from '../components/chat/Mensagem';

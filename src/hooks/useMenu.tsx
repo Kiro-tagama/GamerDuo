@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { colors } from "../style/theme";
+import { colors, themaDark, themaLigth } from "../style/theme";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useColorScheme } from "react-native";
 
 interface PropsPage{
   name:'home'|'chat'|'profile'|'inChat'|'login'
@@ -20,9 +21,10 @@ export default function useMenu() {
 
   const nav=useNavigation()
   
+  const theme = useColorScheme() == "dark"? themaDark : themaLigth
   const active={
-    backgroundColor:colors.white,
-    shadowColor: colors.white,
+    backgroundColor:theme.colors.text,
+    shadowColor: theme.colors.text,
     shadowOffset: {
       width: 10,
       height: 10,

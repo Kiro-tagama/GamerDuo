@@ -1,9 +1,9 @@
-import { DarkTheme, useTheme } from "@react-navigation/native"
+import { DarkTheme, DefaultTheme } from "@react-navigation/native"
 
 export const colors={
-  white:'#eee',
-  black:'#222',
-  gray:'#666',
+  white:'#eeeeee',
+  black:'#222222',
+  gray:'#666666',
   midWhite:'#eee3',
   midBlack:'#0003',
   midGray:'#6663',
@@ -17,6 +17,16 @@ export const themaDark={
     ...DarkTheme.colors,
     background: colors.black,
     text: colors.white,
+    border: colors.gray,
   }
 }
 
+export const themaLigth={
+  dark:false,
+  colors:{
+    ...DefaultTheme.colors,
+    background: colors.white,
+    text: colors.black,
+    border: colors.gray,
+  }
+}

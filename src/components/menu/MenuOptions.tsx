@@ -1,15 +1,22 @@
 import { TouchableHighlight,TouchableOpacity, View, Image, Text, Modal } from "react-native";
-import { stylesMenu } from "../style/style";
 import { Feather, MaterialIcons, Octicons } from '@expo/vector-icons';
-import useMenu from "../hooks/useMenu";
+import useMenu from "../../hooks/useMenu";
 import { useContext, useState } from "react";
-import { ContextArea } from "../firebase/ContextoProvider";
+import { ContextArea } from "../../firebase/ContextoProvider";
+import { useStyle } from "../../style/style";
 
 export function MenuOptions() {
   const {page,active,nav} = useMenu()
   // @ts-ignore
   const {user,deslog}=useContext(ContextArea)
+  const { stylesMenu } = useStyle()
+
   const [modal,setModal]=useState(false)
+
+  const colorActive={
+    dark:stylesMenu.active.backgroundColor,
+    ligth:"#eee"
+  }
 
   return(
     <>
@@ -24,7 +31,7 @@ export function MenuOptions() {
         } }
       >
         <Feather name="layers" size={30} color={/* @ts-ignore */
-        page == 'home' ? "#222" : "#eeeeeecc"} />
+        page == 'home' ? colorActive.dark : colorActive.ligth} />
       </TouchableHighlight>
 
       <TouchableHighlight
@@ -37,7 +44,7 @@ export function MenuOptions() {
         } }
       >
         <Feather name="message-circle" size={30} color={/* @ts-ignore */
-        page == 'chat' ? "#222" : "#eeeeeecc"} />
+        page == 'chat' ? colorActive.dark : colorActive.ligth} />
       </TouchableHighlight>
 
 
@@ -65,7 +72,7 @@ export function MenuOptions() {
             source={{ uri: user.img }} />
           :
           <Feather name="user" size={30} color={/* @ts-ignore */
-          page == "profile" ? "#222" : "#eeeeeecc"} />
+          page == "profile" ? colorActive.dark : colorActive.ligth} />
         }
       </TouchableHighlight>
     </View>

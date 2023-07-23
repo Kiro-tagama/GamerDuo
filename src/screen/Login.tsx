@@ -1,5 +1,5 @@
 import { View,Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { stylesLogin, stylesTexts } from '../style/style';
+import { useStyle } from '../style/style';
 import { useLogin } from '../hooks/useLogin';
 import { colors } from '../style/theme';
 import { Feather } from '@expo/vector-icons';
@@ -7,6 +7,8 @@ import { Feather } from '@expo/vector-icons';
 export function Login() {
   const {type, name, setName, email, setEmail, anime, viewPass, setViewPass,
     password, setPassword, handleLogin, handleType}=useLogin()
+
+  const { stylesLogin, stylesTexts } = useStyle()
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

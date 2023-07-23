@@ -1,24 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 
-import { stylesApp } from './src/style/style';
-import { themaDark } from './src/style/theme';
+import { themaDark, themaLigth } from './src/style/theme';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { Router } from './src/global/Route';
 
 import { ContextProvider } from './src/firebase/ContextoProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useColorScheme } from 'react-native';
 
 export default function App() {
-  
+  const scheme = useColorScheme()
+  console.log(scheme); 
+  const theme = scheme == "dark"? themaDark : themaLigth
+
   return (
     <ContextProvider>
-      <NavigationContainer theme={themaDark}>
-        <View style={[stylesApp.container,{backgroundColor:themaDark.colors.background}]}>
-          <Router/>
-          <StatusBar style='light'/>
-        </View>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer theme={theme}>
+          <Router theme={theme}/>
+          <StatusBar style= {scheme == "dark"? 'light': 'dark'}/>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </ContextProvider>
   );
 }

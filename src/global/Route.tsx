@@ -8,13 +8,18 @@ import { Profile } from "../screen/Profile"
 import { useContext } from "react"
 
 import {ContextArea} from '../firebase/ContextoProvider'
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { View } from "react-native"
 
 const Stack= createNativeStackNavigator()
 
-function Router() {
+function Router({theme}:any) {
+  //@ts-ignore
   const {user}=useContext(ContextArea)
-  
+  const insets = useSafeAreaInsets();
+
   return(
+    <View style={{ flex: 1, paddingTop: insets.top, backgroundColor:theme.colors.background }}>
     <Stack.Navigator screenOptions={{headerShown:false}}>
       {user == null ?
       <Stack.Screen name="login" component={Login}/>
@@ -27,6 +32,7 @@ function Router() {
       </>
       }
     </Stack.Navigator>
+    </View>
   )
 }
 

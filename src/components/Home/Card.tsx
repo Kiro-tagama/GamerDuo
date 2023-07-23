@@ -1,7 +1,8 @@
-import { View, Text, Image, ImageBackground } from "react-native";
-import { stylesHome, stylesTexts } from "../../style/style";
+import { View, ImageBackground } from "react-native";
+import { useStyle } from "../../style/style";
 import { agents } from "../../api/valorantApi";
 import { CardInfo } from "./CardInfo";
+import useMenu from "../../hooks/useMenu";
 
 interface Card{
   profile:{
@@ -14,10 +15,12 @@ interface Card{
 }
 
 export function Card({profile}:Card){
+  const { stylesHome } = useStyle()
+  const {active} = useMenu()
   const agent=agents[0]
   
   return(
-    <View style={[stylesHome.card,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>
+    <View style={[stylesHome.card,active,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>
 
     <ImageBackground source={{uri:agent.background}}
       style={{height:"123%",justifyContent:'flex-end'}}>

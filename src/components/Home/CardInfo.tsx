@@ -1,5 +1,5 @@
-import { View, Text, Image, ImageBackground } from "react-native";
-import { stylesHome, stylesTexts } from "../../style/style";
+import { View, Text, Image } from "react-native";
+import { useStyle } from "../../style/style";
 import { agents } from "../../api/valorantApi";
 
 interface Card{
@@ -13,6 +13,7 @@ interface Card{
 }
 
 export function CardInfo({profile}:Card) {
+  const { stylesHome, stylesTexts } =useStyle()
   const agent=agents[0]
   return(
     <View style={stylesHome.card2}>

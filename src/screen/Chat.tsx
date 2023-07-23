@@ -1,11 +1,11 @@
 import { Text, View, FlatList} from "react-native";
-import { Menu } from "../components/Menu";
-import { stylesTexts } from "../style/style";
+import { Menu } from "../components/menu/Menu";
+import { useStyle } from "../style/style";
 import { perfis } from '../api/fakeProfiles';
 import { ChatCard } from "../components/chat/ChatCard";
 
 export function Chat() {
-
+  const { stylesTexts } =useStyle()
   return(
     <>
     <View style={{flex:1}}>

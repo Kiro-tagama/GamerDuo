@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
-import { Menu } from "../components/Menu";
-import { stylesChat, stylesTexts } from "../style/style";
+import { Menu } from "../components/menu/Menu";
+import { useStyle } from "../style/style";
 import { PerfilCards } from "../components/PerfilCards";
 import { useRoute } from "@react-navigation/native";
 import { colors } from "../style/theme";
@@ -10,6 +10,8 @@ import { ContextArea } from "../firebase/ContextoProvider";
 export function Profile(){
   // @ts-ignore
   const {user}=useContext(ContextArea)
+  const { stylesChat, stylesTexts, stylesProfile } =useStyle()
+
   const {params}=useRoute()
   // @ts-ignore
   const data= params == null || params.id == user.id ? user: params 
@@ -20,7 +22,7 @@ export function Profile(){
         {data.img?
           <Image
           source={{uri:data.img}}
-          style={{height:100,width:100,borderColor:colors.white,borderWidth:2,borderRadius:50,margin:10,marginTop:40}}
+          style={stylesProfile.imgProfile}
           />
           : null
         }

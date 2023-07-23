@@ -1,8 +1,8 @@
 import { Text, View, Image, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { stylesChat, stylesTexts } from '../style/style';
-import useMenu from '../hooks/useMenu';
+import useMenu from '../../hooks/useMenu';
 import { AntDesign } from '@expo/vector-icons';
-import { colors } from '../style/theme';
+import { colors } from '../../style/theme';
+import { useStyle } from '../../style/style';
 
 interface PropsParams{
   params:{
@@ -16,15 +16,16 @@ interface PropsParams{
 
 export function MenuInChat({params}:PropsParams){
   const {nav} =useMenu()
+  const { stylesChat, stylesTexts } = useStyle()
 
   return(
     <View style={stylesChat.base}>
       <TouchableHighlight
         onPress={()=>nav.goBack()}
         style={stylesChat.bt}
-        underlayColor={colors.white}
+        underlayColor={stylesChat.base.color}
       >
-        <AntDesign name="left" size={24} color={colors.white} style={{marginRight:5}}/>
+        <AntDesign name="left" size={24} color={stylesChat.base.color} style={{marginRight:5}}/>
       </TouchableHighlight>
       <Text style={stylesTexts.normal}>{params.nome}</Text>
       <TouchableOpacity

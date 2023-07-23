@@ -1,11 +1,12 @@
 import { TouchableHighlight, View} from "react-native";
-import { stylesMenu } from "../style/style";
+import { useStyle } from "../../style/style";
 import { Feather } from '@expo/vector-icons';
-import useMenu from "../hooks/useMenu";
+import useMenu from "../../hooks/useMenu";
 import { MenuOptions } from "./MenuOptions";
 
 export function Menu({prop}:any){
   const {page} = useMenu()
+  const { stylesMenu }=useStyle()
 
   return(
     <View style={{flexDirection:'row',justifyContent:'center', marginVertical:15}}>

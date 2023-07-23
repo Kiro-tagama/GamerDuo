@@ -1,22 +1,26 @@
+import { useContext, useEffect, useState } from 'react';
 import { View,Image, ActivityIndicator} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { stylesHome, stylesMenu} from '../style/style';
 
-import { Card } from '../components/Home/Card';
-import { Menu } from '../components/Menu';
+import { ContextArea } from '../firebase/ContextoProvider';
+
+import { Card } from '../components/home/Card';
+import { Menu } from '../components/menu/Menu';
 
 import Swiper from 'react-native-deck-swiper';
 
+import { getAlluser } from '../api/api';
 import useMenu from '../hooks/useMenu';
 
-import { Feather } from '@expo/vector-icons';
+import { useStyle} from '../style/style';
 import { colors } from '../style/theme';
-import { useContext, useEffect, useState } from 'react';
-import { getAlluser } from '../api/api';
-import { ContextArea } from '../firebase/ContextoProvider';
+import { Feather } from '@expo/vector-icons';
 
 export function Home() {
+  // @ts-ignore
   const {user}=useContext(ContextArea)
+
+  const { stylesHome, stylesMenu } =useStyle()
   
   const {like,noLike,setSwiperRef,swiperRef}= useMenu()
   
