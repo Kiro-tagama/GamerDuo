@@ -87,19 +87,19 @@ export function MenuOptions() {
         onPress={()=>setModal(false)}>
           <View style={{gap:10,padding:10,flexDirection:'row',justifyContent:'center',marginLeft:'auto',width:"74%"}}>
             <TouchableOpacity 
-              style={[stylesMenu.opts,{backgroundColor:"#eee"}]}
+              style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
               onPress={()=>{/*page edition or modal edition app*/ }}
             >
-              <Octicons name="gear" size={24} color="black" />
+              <Octicons name="gear" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>
             <TouchableOpacity 
-              style={[stylesMenu.opts,{backgroundColor:"#eee"}]}
+              style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
               onPress={()=>{/*page info or modal info app*/ }}
             >
-              <Feather name="info" size={24} color="black" />
+              <Feather name="info" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>
             <TouchableOpacity 
-              style={[stylesMenu.opts,{backgroundColor:"#eee"}]}
+              style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
               onPress={()=>{deslog()}}
             >
               <MaterialIcons name="logout" size={24} color="red" />
