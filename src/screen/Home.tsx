@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { View,Image, ActivityIndicator} from 'react-native';
+import { View,Image, ActivityIndicator,Text} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { ContextArea } from '../firebase/ContextoProvider';
@@ -18,11 +18,11 @@ import { Feather } from '@expo/vector-icons';
 
 export function Home() {
   // @ts-ignore
-  const {user}=useContext(ContextArea)
+  const {user,like,noLike}=useContext(ContextArea)
 
   const { stylesHome, stylesMenu } =useStyle()
   
-  const {like,noLike,setSwiperRef,swiperRef}= useMenu()
+  const {setSwiperRef,swiperRef}= useMenu()
   
   const [perfil,setPerfil]=useState<any>(null)
 
@@ -31,7 +31,7 @@ export function Home() {
       setPerfil(await getAlluser(user.id))
     }
     data()
-  },[perfil<2])
+  },[perfil])
 
   return (
     <>
@@ -51,7 +51,8 @@ export function Home() {
             locations={[0.1,1]}
             style={{flex:1,justifyContent:'center'}}
           >
-            <ActivityIndicator size={100} color={"#222"}/>
+            <ActivityIndicator size={200} color={"#222"}/>
+            <Text style={{position:"absolute",width:"100%",textAlign:"center"}}>Buscando ...</Text>
           </LinearGradient>
         </View>:
         // @ts-ignore
@@ -64,7 +65,7 @@ export function Home() {
           cardVerticalMargin={0}
           cardHorizontalMargin={0}
           backgroundColor='transparent'
-          infinite={true} //apagar depois
+          //infinite={true} //apagar depois
           outputRotationRange={["0deg","0deg",'0deg']}
           verticalSwipe={false} //habilidatar ou deixar desabilitado? (ele pode evitar erros habilitado)
           

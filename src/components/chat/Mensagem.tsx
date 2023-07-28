@@ -14,6 +14,9 @@ interface PropsMensagem{
 
 export function Mensagem({mensagem,user}:PropsMensagem) {
   const { stylesTexts, stylesChat } =useStyle()
+
+  console.log("aqui "+mensagem);
+  
   
   return(
     <View style={[

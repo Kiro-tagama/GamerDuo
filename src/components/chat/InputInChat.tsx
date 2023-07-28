@@ -3,10 +3,11 @@ import { useStyle } from '../../style/style';
 import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { colors } from '../../style/theme';
+import { useChat } from '../../hooks/useChat';
 
 export function InputInChat() {
   const { stylesChat, stylesTexts } = useStyle()
-  const [txt,setTxt]=useState('')
+  const {txt,setTxt,sendMensagem}= useChat()
 
   return(
     <View style={stylesChat.base}>
@@ -18,7 +19,7 @@ export function InputInChat() {
         placeholderTextColor={colors.gray}
       />
       <TouchableHighlight
-        onPress={()=>console.log(txt)}
+        onPress={()=>sendMensagem}
         style={stylesChat.bt}
         underlayColor={stylesChat.base.color}
       >

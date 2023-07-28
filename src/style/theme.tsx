@@ -1,7 +1,7 @@
 import { DarkTheme, DefaultTheme } from "@react-navigation/native"
 
 export const colors={
-  white:'#eeeeee',
+  white:'#f4f4f4',
   black:'#222222',
   gray:'#666666',
   midWhite:'#eee3',

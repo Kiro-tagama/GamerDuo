@@ -7,13 +7,6 @@ interface PropsPage{
   name:'home'|'chat'|'profile'|'inChat'|'login'
 }
 
-interface infoCard{
-  id: string;
-  nome: string;
-  img: string;
-  agentFav: number;
-}
-
 export default function useMenu() {
   const urlPage=useRoute()
   // @ts-ignore
@@ -31,18 +24,10 @@ export default function useMenu() {
     },
     shadowOpacity: 1,
     shadowRadius: 1,
-
     elevation: 4,
   }
 
   const [swiperRef, setSwiperRef] = useState<any>();
 
-  function like(i:infoCard) {
-    console.log('like\n',i)
-  }
-  function noLike(i:infoCard) {
-    console.log('des like\n',i); 
-  }
-
-  return {page,active,nav,like,noLike,swiperRef, setSwiperRef}
+  return {page,active,nav,swiperRef, setSwiperRef}
 }

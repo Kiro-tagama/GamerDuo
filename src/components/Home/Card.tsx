@@ -17,7 +17,7 @@ interface Card{
 export function Card({profile}:Card){
   const { stylesHome } = useStyle()
   const {active} = useMenu()
-  const agent=agents[0]
+  const agent=agents[Math.floor(Math.random() * 22)]
   
   return(
     <View style={[stylesHome.card,active,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>

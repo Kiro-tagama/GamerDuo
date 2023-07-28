@@ -26,14 +26,16 @@ export function Auth() {
     console.log(data.uid);
       try{
         const userRef = doc(collection(db, "users"), data.uid)
-        const docRef = await setDoc(userRef,
+        await setDoc(userRef,
           {
             id:data.uid,
             name:name,
             email:email,
-            img:'',
+            img:'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
             profilesValorant:[],
             matchs:[],
+            desmatchs:[],
+            chats:[],
             consoles:[
               {"id":0,"consta":false,"name":"pc"},
               {"id":1,"consta":false,"name":"xbox"},

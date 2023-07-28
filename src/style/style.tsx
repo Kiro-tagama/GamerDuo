@@ -113,6 +113,7 @@ export function useStyle() {
 
   const stylesChat= StyleSheet.create({
     cardChat:{
+      backgroundColor:theme.colors.background,
       flexDirection:'row',
       padding:10,
       borderColor:theme.colors.border,
@@ -120,7 +121,15 @@ export function useStyle() {
       alignItems:'center',
       marginVertical:5,
       marginHorizontal:10,
-      borderRadius:30
+      borderRadius:30,
+      shadowColor: theme.colors.text,
+      shadowOffset: {
+        width: 10,
+        height: 10,
+      },
+      shadowOpacity: 1,
+      shadowRadius: 1,
+      elevation: 5,
     },
     base:{
       width:'auto',

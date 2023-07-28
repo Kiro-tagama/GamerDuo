@@ -28,7 +28,7 @@ export function CardInfo({profile}:Card) {
           </View>
         </View>
         
-        <View style={{flexDirection:"row",justifyContent:'space-between'}}>
+        {/* <View style={{flexDirection:"row",justifyContent:'space-between'}}>
           <View style={stylesHome.cardInfo}>
             <Image
               style={{height:60,width:60}}
@@ -39,7 +39,7 @@ export function CardInfo({profile}:Card) {
           <View style={stylesHome.cardInfo}>
             <Text>inf2</Text>
           </View>
-        </View>
+        </View> */}
       </View>
   )
 }

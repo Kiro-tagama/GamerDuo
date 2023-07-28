@@ -7,7 +7,7 @@ import { useStyle } from '../../style/style';
 interface PropsParams{
   params:{
     id: number;
-    nome: string;
+    name: string;
     img: string;
     agentFav: number;
   }
@@ -27,7 +27,7 @@ export function MenuInChat({params}:PropsParams){
       >
         <AntDesign name="left" size={24} color={stylesChat.base.color} style={{marginRight:5}}/>
       </TouchableHighlight>
-      <Text style={stylesTexts.normal}>{params.nome}</Text>
+      <Text style={stylesTexts.normal}>{params.name}</Text>
       <TouchableOpacity
         // @ts-ignore 
         onPress={()=>nav.navigate('profile',params)}
