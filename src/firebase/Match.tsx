@@ -20,11 +20,13 @@ export function Match() {
       matchs: arrayUnion(i.id)
     })
     .then(()=>{
-      //@ts-ignore
-      setTimeout(createChat(i), 1500)
       console.log('like\n',i.id)
     })
     .catch((err)=>console.log(err))
+    
+    //@ts-ignore
+    setTimeout(()=>{createChat(i)}, 1500)
+    // caso os dois usuarios criem ao mesmo tempo tem um delei de verificação
   }
 
   async function noLike(i:infoCard) {
@@ -36,9 +38,6 @@ export function Match() {
   }
 
   async function createChat(i:infoCard) {
-    // chama os dados do outro depois de um tempo
-    // cria a verificação 
-    // cria o chat se tiver se n, n cria
     const user1 = await getUser(user.id) //usuario local
     const user2 = await getUser(i.id)    //usuario passado pelo like
 

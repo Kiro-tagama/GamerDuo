@@ -31,20 +31,22 @@ export function useChat() {
   },[])
 
   async function sendMensagem() {
+    if (txt.length<=0) return
+
     const data=new Date()
     const dia=[data.getDate(),data.getMonth(),data.getFullYear()]
     const hora=[data.getHours(),data.getMinutes(),data.getSeconds()]
 
-    if (txt.length>=1) {
-      //@ts-ignore
-      await updateDoc(doc(db, "chats", params.id), {
-        mensagem: arrayUnion({
-          name:user.name,
-          text:txt,
-          date:dia,
-          time:hora})
-      })
-    }
+    //@ts-ignore
+    await updateDoc(doc(db, "chats", params.id), {
+      mensagem: arrayUnion({
+        name:user.name,
+        id:user.id,
+        text:txt,
+        date:dia,
+        time:hora})
+    }).then()
+    setTxt('')
   }
 
   return{flatListRef,conversa,scrollToBottom,txt,setTxt,sendMensagem}

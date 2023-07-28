@@ -22,17 +22,8 @@ export function Home() {
 
   const { stylesHome, stylesMenu } =useStyle()
   
-  const {setSwiperRef,swiperRef}= useMenu()
+  const {setSwiperRef,swiperRef,perfil}= useMenu()
   
-  const [perfil,setPerfil]=useState<any>(null)
-
-  useEffect(()=>{
-    async function data(){
-      setPerfil(await getAlluser(user.id))
-    }
-    data()
-  },[perfil])
-
   return (
     <>
     <View style={stylesHome.container}>

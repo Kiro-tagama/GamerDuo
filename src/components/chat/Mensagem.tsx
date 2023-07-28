@@ -1,32 +1,32 @@
 import { View,Text } from "react-native"
 import { useStyle } from "../../style/style";
-import { colors } from "../../style/theme";
+import { useContext } from "react";
+import { ContextArea } from "../../firebase/ContextoProvider";
 
 interface PropsMensagem{
   mensagem:{
-    id: number;
-    mensagem: string;
-    data: string;
-    horario: string;
-  },
-  user:number
+    id:string,
+    name:string,
+    text:string,
+    date:[],
+    time:any[]
+  }
 }
 
-export function Mensagem({mensagem,user}:PropsMensagem) {
+export function Mensagem({mensagem}:PropsMensagem) {
+  //@ts-ignore
+  const {user}=useContext(ContextArea)
   const { stylesTexts, stylesChat } =useStyle()
-
-  console.log("aqui "+mensagem);
-  
   
   return(
     <View style={[
     stylesChat.mensagem,
     {
-      marginLeft:user==mensagem.id?"auto":0,
-      marginRight:user!=mensagem.id?"auto":0,
+      marginLeft:user.id==mensagem.id?"auto":0,
+      marginRight:user.id!=mensagem.id?"auto":0,
     }]}>
-      <Text style={[stylesTexts.normal,{color:stylesChat.mensagem.color}]}>{mensagem.mensagem}</Text>
-      <Text style={[stylesTexts.small,{marginLeft:'auto'}]}>{mensagem.horario}</Text>
+      <Text style={[stylesTexts.normal,{color:stylesChat.mensagem.color}]}>{mensagem.text}</Text>
+      <Text style={[stylesTexts.small,{marginLeft:'auto'}]}>{mensagem.time[0]}:{mensagem.time[1]}</Text>
     </View>
   )
 }

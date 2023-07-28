@@ -19,7 +19,7 @@ export function InputInChat() {
         placeholderTextColor={colors.gray}
       />
       <TouchableHighlight
-        onPress={()=>sendMensagem}
+        onPress={()=>sendMensagem()}
         style={stylesChat.bt}
         underlayColor={stylesChat.base.color}
       >

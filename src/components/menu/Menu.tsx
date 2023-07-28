@@ -14,7 +14,7 @@ export function Menu({prop}:any){
       {/* @ts-ignore */
       page == 'home'?
         <TouchableHighlight style={stylesMenu.bt}
-        onPress={()=>prop.swipeLeft()}
+        onPress={()=>prop?prop.swipeLeft():null }
         underlayColor="#ff7d63">
           <Feather name="x" size={30} color="#eee" />
         </TouchableHighlight>
@@ -27,7 +27,7 @@ export function Menu({prop}:any){
       page == 'home'?
         <TouchableHighlight 
         style={stylesMenu.bt} 
-        onPress={()=>prop.swipeRight()} //.swipeRight()
+        onPress={()=>prop?prop.swipeRight():null} //.swipeRight()
         underlayColor="#b2ff6e">
           <Feather name="heart" size={30} color="#eee"/>
         </TouchableHighlight>

@@ -11,7 +11,6 @@ import { useColorScheme } from 'react-native';
 
 export default function App() {
   const scheme = useColorScheme()
-  console.log(scheme); 
   const theme = scheme == "dark"? themaDark : themaLigth
 
   return (
