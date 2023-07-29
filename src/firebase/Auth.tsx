@@ -10,6 +10,7 @@ const db = getFirestore(Firebase)
 
 export function Auth() {
   const [user,setUser]=useState<any>()
+  const [errLogin,setErrLogin]=useState(false)
 
   useEffect(()=>{
     async function StoregeUser() {
@@ -48,6 +49,7 @@ export function Auth() {
       }
     })
     .catch((err)=>{
+      setErrLogin(true)
       console.log('err ao criar conta:')
       console.log(err.code)
       console.log(err.message)
@@ -73,6 +75,7 @@ export function Auth() {
       }
     })
     .catch((err)=>{
+      setErrLogin(true)
       console.log('err ao logar conta:')
       console.log(err.code)
       console.log(err.message)
@@ -92,5 +95,5 @@ export function Auth() {
     console.log('saiu');
   }
 
-  return {loginAcount,createAcount,deslog,user}
+  return {loginAcount,createAcount,deslog,user,errLogin,setErrLogin}
 }

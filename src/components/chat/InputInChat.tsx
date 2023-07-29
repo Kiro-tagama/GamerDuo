@@ -1,6 +1,5 @@
-import { Text, View, TextInput, TouchableHighlight } from 'react-native';
+import { View, TextInput, TouchableHighlight } from 'react-native';
 import { useStyle } from '../../style/style';
-import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { colors } from '../../style/theme';
 import { useChat } from '../../hooks/useChat';

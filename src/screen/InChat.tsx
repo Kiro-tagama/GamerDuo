@@ -16,7 +16,7 @@ export function InChat() {
       params={params.data}/>
       <View style={{flex:1,flexDirection:"row",alignItems:"flex-end"}}>
         {//@ts-ignore
-        conversa && conversa.mensagem ?  
+        conversa != undefined && conversa.mensagem.length != 0 ?  
           <FlatList
             //@ts-ignore
             ref={flatListRef}
@@ -27,7 +27,7 @@ export function InChat() {
             showsVerticalScrollIndicator={false}
             onContentSizeChange={scrollToBottom}
           /> : null 
-        } 
+        }
       </View>
       <InputInChat/>
     </View>

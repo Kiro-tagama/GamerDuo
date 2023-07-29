@@ -104,10 +104,13 @@ export function useStyle() {
       borderColor: theme.colors.border, 
       borderWidth: 1, 
       marginBottom: 10,
-      backgroundColor:theme.colors.background,
+      backgroundColor:theme.colors.text,
       borderRadius:30,
       padding:10,
       alignItems:"center"
+    },
+    btText:{
+      color:theme.colors.background
     }
   })
 

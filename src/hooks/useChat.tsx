@@ -46,6 +46,7 @@ export function useChat() {
         date:dia,
         time:hora})
     }).then()
+    .catch(e=>console.log(e))
     setTxt('')
   }
 
