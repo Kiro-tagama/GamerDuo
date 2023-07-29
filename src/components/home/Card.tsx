@@ -20,7 +20,7 @@ export function Card({profile}:Card){
   const agent=agents[Math.floor(Math.random() * 22)]
   
   return(
-    <View style={[stylesHome.card,active,{backgroundColor:"#"+agent.backgroundGradientColors[0]}]}>
+    <View style={[stylesHome.card,active,{backgroundColor:"#"+agent.backgroundGradientColors[0]||"#222"}]}>
 
     <ImageBackground source={{uri:agent.background}}
       style={{height:"123%",justifyContent:'flex-end'}}>

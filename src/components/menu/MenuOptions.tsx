@@ -97,7 +97,9 @@ export function MenuOptions() {
             </TouchableOpacity>
             <TouchableOpacity 
               style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
-              onPress={()=>{/*page info or modal info app*/ }}
+              onPress={()=>{
+                /* @ts-ignore */
+                nav.navigate( 'infoApp' )}}
             >
               <Feather name="info" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>

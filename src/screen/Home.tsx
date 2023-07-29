@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
-import { View,Image, ActivityIndicator,Text} from 'react-native';
+import { useContext } from 'react';
+import { View,Image, ActivityIndicator,Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { ContextArea } from '../firebase/ContextoProvider';
@@ -9,7 +9,6 @@ import { Menu } from '../components/menu/Menu';
 
 import Swiper from 'react-native-deck-swiper';
 
-import { getAlluser } from '../api/api';
 import useMenu from '../hooks/useMenu';
 
 import { useStyle} from '../style/style';
@@ -18,7 +17,7 @@ import { Feather } from '@expo/vector-icons';
 
 export function Home() {
   // @ts-ignore
-  const {user,like,noLike}=useContext(ContextArea)
+  const {like,noLike}=useContext(ContextArea)
 
   const { stylesHome, stylesMenu } =useStyle()
   

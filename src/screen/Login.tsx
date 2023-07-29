@@ -76,7 +76,7 @@ export function Login() {
       />
       <View style={stylesLogin.input}>
         <TextInput
-          style={{fontSize:20,color:colors.white,flex:1}}
+          style={{fontSize:20,color:stylesLogin.input.color,flex:1}}
           placeholder="Senha"
           textContentType='password'
           onChangeText={text => setPassword(text)}
@@ -89,8 +89,8 @@ export function Login() {
           style={{marginLeft:5}}
         >
           {viewPass?
-            <Feather name="eye" size={24} color="#eee" />:
-            <Feather name="eye-off" size={24} color="#eee" />
+            <Feather name="eye" size={24} color={stylesLogin.input.color} />:
+            <Feather name="eye-off" size={24} color={stylesLogin.input.color} />
           }
         </TouchableOpacity>
       </View>
@@ -98,11 +98,10 @@ export function Login() {
         style={[stylesLogin.bt,{margin:30}]}
         onPress={handleLogin}
       >
-        {anime? <ActivityIndicator size="large" color="#000000"/>:
+        {anime? <ActivityIndicator size="large" color={stylesLogin.btText.color}/>:
         <Text style={[stylesTexts.h2,stylesLogin.btText]}>{type == 'login' ? "Logar" : "Cadastrar"}</Text>}
       </TouchableOpacity>
 
-      
       <TouchableOpacity
         style={{marginTop:20}}
         onPress={handleType}
