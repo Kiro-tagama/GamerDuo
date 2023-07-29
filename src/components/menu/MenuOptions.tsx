@@ -4,6 +4,7 @@ import useMenu from "../../hooks/useMenu";
 import { useContext, useState } from "react";
 import { ContextArea } from "../../firebase/ContextoProvider";
 import { useStyle } from "../../style/style";
+import { EditPerfil } from "../../screen/EditPerfil";
 
 export function MenuOptions() {
   const {page,active,nav} = useMenu()
@@ -88,7 +89,9 @@ export function MenuOptions() {
           <View style={{gap:10,padding:10,flexDirection:'row',justifyContent:'center',marginLeft:'auto',width:"74%"}}>
             <TouchableOpacity 
               style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
-              onPress={()=>{/*page edition or modal edition app*/ }}
+              onPress={()=>{
+                /* @ts-ignore */
+                nav.navigate( 'EditPerfil' )}}
             >
               <Octicons name="gear" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>
