@@ -5,32 +5,26 @@ export function useLogin() {
   // @ts-ignore
   const {createAcount,loginAcount}=useContext(ContextArea)
 
-  const [type, setType] = useState('login')
+  const [type, setType] = useState<'login'|'cadastra'>('login')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [anime, setAnime] = useState(false)
-  const [viewPass, setViewPass] = useState(true)
+  const [anime, setAnime] = useState<boolean>(false)
+  const [viewPass, setViewPass] = useState<boolean>(true)
 
-  function handleLogin(){
-    if (type == 'login') {
-      console.log('logar');
-      setAnime(true)
-        loginAcount(email,password)
-      setAnime(false)
-    } else {
-      console.log('cadastra');
-      setAnime(true)
-        createAcount(name,email,password)
-      setAnime(false)
+  async function handleLogin(){
+    setAnime(true)
+    {type == 'login' ? 
+      await loginAcount(email,password):
+      await createAcount(name,email,password)
     }
+    setAnime(false)
   }
 
   function handleType (){
-    if(type=='login'){
-      setType('cadastra')
-    }else{
+    {type == 'login' ?
+      setType('cadastra'):
       setType('login')
     }
   }

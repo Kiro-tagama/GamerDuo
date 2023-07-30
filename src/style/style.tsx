@@ -92,11 +92,11 @@ export function useStyle() {
       borderColor: theme.colors.border, 
       borderWidth: 1, 
       marginBottom: 10,
-      backgroundColor:colors.midBlack,
+      backgroundColor:theme.colors.background,
       borderRadius:30,
       paddingHorizontal:20,
       fontSize:20,
-      color:colors.white
+      color:theme.colors.text
     },
     bt:{
       height: 60, 
