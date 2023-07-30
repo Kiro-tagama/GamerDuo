@@ -24,7 +24,7 @@ export function InfoApp(){
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       <Text style={[stylesTexts.normal, styles.description]}>
-          Bem-vindo ao {appInfo.nome}! Este é um aplicativo incrível desenvolvido com React Native.
+      Bem-vindo ao {appInfo.nome}! Este é um aplicativo incrível desenvolvido com React Native. Aqui, você pode encontrar um parceiro para jogar e interagir com outros jogadores que compartilham os mesmos interesses. Explore os perfis dos usuários, inicie conversas e junte-se a grupos de jogos para ampliar sua experiência de jogar com outras pessoas apaixonadas por games.
         </Text>
         <Text style={[stylesTexts.normal, styles.info]}>
           <FontAwesome name="code" size={14} color={stylesTexts.normal.color} />  Versão: {appInfo.versao}
