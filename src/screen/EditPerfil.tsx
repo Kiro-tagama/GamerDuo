@@ -8,7 +8,6 @@ import {
 import React, { useState } from "react"
 
 import Checkbox from 'expo-checkbox'
-
 import CheckBox from '@react-native-community/checkbox';
  
 export function EditPerfil() {
