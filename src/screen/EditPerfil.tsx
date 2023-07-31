@@ -8,49 +8,132 @@ import {
   Keyboard,
   ScrollView,
   Vibration,
+  TouchableHighlight,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
+
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { useStyle } from "../style/style";
+import { colors } from "../style/theme";
 
 // @ts-ignore
 function MyCheckbox({ onChange, checked }) {
+  const {stylesTexts} = useStyle()
   return (
     <Pressable
-      style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+      style={[styles.checkboxBase, checked && {backgroundColor:stylesTexts.normal.color}]}
       onPress={onChange}
     >
-      {checked && <Ionicons name="checkmark" size={24} color="red" />}
+      {checked && <Ionicons name="checkmark" size={24} color={colors.red} />}
     </Pressable>
   );
 }
 
+function Divider() {
+  const {stylesTexts} = useStyle()
+  return(
+    <View style={{backgroundColor:stylesTexts.normal.color,height:1.5,width:"100%",marginVertical:20}}></View>
+  )
+}
+
+/*
+  vamos tirar esse tanto de useState e deixar só um
+
+    - const {user} = useContext(contextArea)
+    - useState(user) // vai receber os dados ja salvo
+    - quando o usuario entrar vai carregar um useEffect que vai chamar a api getUser(user.id)
+    - que vai setar o dado local e o usuario local salvando com async storege 
+
+    - para atualizar no firebase ... tirado do arquivo de match do firebase
+    async function noLike(i:infoCard) {
+      await updateDoc(doc(db,"users", user.id),{
+        desmatchs: arrayUnion(i.id) // colocar o estado aqui
+      })
+      .then(()=>console.log('deslike\n',i.id))
+      .catch((err)=>console.log(err))
+    }
+
+    - o "html" ta muito grande, seria bom separar por componentes
+*/
+
+
 export function EditPerfil() {
+  const {stylesTexts,stylesLogin} = useStyle()
+
+  ///
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
   const [bio, setBio] = useState("")
-  const [psnChecked, setPsnChecked] = useState(false)
-  const [xboxChecked, setXboxChecked] = useState(false)
-  const [pcChecked, setPcChecked] = useState(false)
-  const [nintendoChecked, setNintendoChecked] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(null)
+  // const [psnChecked, setPsnChecked] = useState(false)
+  // const [xboxChecked, setXboxChecked] = useState(false)
+  // const [pcChecked, setPcChecked] = useState(false)
+  // const [nintendoChecked, setNintendoChecked] = useState(false)
   const [RocketLeagueChecked, setRocketLeagueChecked] = useState(false)
   const [valorantChecked, setValorantChecked] = useState(false)
   const [minecraftChecked, setMinecraftChecked] = useState(false)
   const [csgoChecked, setCsgoChecked] = useState(false)
-  const nav = useNavigation()
+  ///
 
-function validationInfos(){
-  if (nome == '' || email == '') {
-    //@ts-ignore
-    setErrorMessage('Campo obrigatório*')
-    Vibration.vibrate(500)
+  const nav = useNavigation()
+  const [errorMessage, setErrorMessage] = useState<string|null>(null)
+
+  const platforms=["PlayStation","Xbox","PC","NintendoSwitch","Mobile"]
+  const [platf,setPlatf]=useState(
+    platforms.reduce((acc:any, platform) => {
+      acc[platform] = false;
+      return acc;
+    }, {})
+  )
+
+  function validationInfos(){
+    if (nome == '' || email == '') {
+      setErrorMessage('Campo obrigatório*')
+      Vibration.vibrate(500)
+    }
+    else{
+      setErrorMessage(null)
+    }
   }
-  else{
-    setErrorMessage(null)
+
+  function Botoes() {
+    return(
+      <View style={{marginVertical:10}}>
+      <View style={{ flexDirection: "row", justifyContent: "space-between", }}>
+        <TouchableOpacity
+          style={[stylesLogin.bt, { width: "48%",marginBottom:0 }]}
+          onPress={() => {
+            /*cancelar ações*/
+          } }
+        >
+          <Text style={[stylesTexts.h3, stylesLogin.btText]}>Cancelar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[stylesLogin.bt, { width: "48%",marginBottom:0 }]}
+          onPress={() => {
+            validationInfos();
+          } }
+        >
+          <Text style={[stylesTexts.h3, stylesLogin.btText]}>Salvar</Text>
+        </TouchableOpacity>
+      </View>
+      <Divider />
+      <View>
+        <TouchableHighlight
+          style={[stylesLogin.input, { borderColor: colors.red, width: '100%', justifyContent: 'center' }]}
+          underlayColor={colors.red}
+          onPress={() => {
+            /*apagar conta*/
+          } }
+        >
+          <Text style={[stylesTexts.h3, { color: colors.red }]}>Apagar Conta</Text>
+        </TouchableHighlight>
+      </View>
+      </View>
+    )
   }
-}
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,45 +147,45 @@ function validationInfos(){
           marginBottom:10,
         }}
       >
-        <AntDesign name="left" size={24} color={'#ddd'} style={{marginRight:5}}/>
+        <AntDesign name="left" size={24} color={stylesTexts.normal.color} style={{marginRight:5}}/>
         </TouchableOpacity>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View>
         <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
-          <Text style={styles.titles}>Nome</Text>
-          <Text style={styles.errorMessage}>{errorMessage}</Text>
+          <Text style={stylesTexts.h2}>Nome</Text>
+          {errorMessage?<Text style={styles.errorMessage}>{errorMessage}</Text>:null}
           <TextInput
             placeholder="João da Silva"
-            style={styles.textInput}
-            placeholderTextColor="#ddd"
+            style={[stylesLogin.input,{width:"100%",marginTop:4}]}
+            placeholderTextColor={colors.gray}
             onChangeText={(text: any) => setNome(text)}
             value={nome}
           />
         </Pressable>
 
         <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
-          <Text style={styles.titles}>Email</Text>
-          <Text style={styles.errorMessage}>{errorMessage}</Text>
+          <Text style={stylesTexts.h2}>Email</Text>
+          {errorMessage?<Text style={styles.errorMessage}>{errorMessage}</Text>:null}
           <TextInput
             placeholder="Ex: joaosilva@gmail.com"
-            style={styles.textInput}
-            placeholderTextColor="#ddd"
-            onChangeText={(text: any) => setEmail(text)}
+            editable={false}
+            style={[stylesLogin.input,{width:"100%",marginTop:4}]}
+            placeholderTextColor={colors.gray}
+            onChangeText={(text: string) => setEmail(text)}
             value={email}
           />
         </Pressable>
 
         <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
-          <Text style={styles.titlesBox}>Biografia</Text>
+          <Text style={stylesTexts.h2}>Biografia</Text>
           <TextInput
-            style={styles.textInputBox}
+            style={[stylesLogin.input,{width:"100%",marginTop:4,height:120}]}
             placeholder="Ex: Me chamo joão e tenho 20 anos..."
-            placeholderTextColor="#ddd"
+            placeholderTextColor={colors.gray}
             editable
             multiline
             numberOfLines={4}
-            maxLength={40}
-            onChangeText={(text: any) => setBio(text)}
+            onChangeText={(text: string) => setBio(text)}
             value={bio}
           />
         </Pressable>
@@ -110,64 +193,40 @@ function validationInfos(){
 
 
     {/* PLATAFORMAS */}
-
-
-      <View style={styles.containerLists}>
-        <Text style={{color: "#ddd", fontSize: 20, marginBottom:10, marginTop:10,}}>Plataforma</Text>
-        <View style={styles.itemList} >
-          <MyCheckbox
-            onChange={() => setPsnChecked(!psnChecked)}
-            checked={psnChecked}
-          ></MyCheckbox>
-          <Pressable onPress={() => setPsnChecked(!psnChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>PlayStation</Text>
-          </Pressable>
-        </View>
-
-        <View style={styles.itemList}>
-          <MyCheckbox
-            onChange={() => setXboxChecked(!xboxChecked)}
-            checked={xboxChecked}
-          />
-          <Pressable onPress={() => setXboxChecked(!xboxChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Xbox</Text>
-          </Pressable>
-        </View>
-
-        <View style={styles.itemList}>
-          <MyCheckbox
-            onChange={() => setPcChecked(!pcChecked)}
-            checked={pcChecked}
-          />
-          <Pressable onPress={() => setPcChecked(!pcChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>PC</Text>
-          </Pressable>
-        </View>
-
-        <View style={styles.itemList}>
-          <MyCheckbox
-            onChange={() => setNintendoChecked(!nintendoChecked)}
-            checked={nintendoChecked}
-          />
-          <Pressable onPress={() => setNintendoChecked(!nintendoChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Nintendo Switch</Text>
-          </Pressable>
-        </View>
+      <View style={{marginBottom:10}}>
+        <Text style={stylesTexts.h2}>Plataforma</Text>
+        {platforms.map((i:string)=>{
+        return(
+          <View style={{
+            flexDirection: "row",
+            alignItems: "center"}} 
+          >
+            <MyCheckbox
+              //recorri ao gpt pq n lembrava como fazer essa parte ksk
+              onChange={() => setPlatf((prevPlatf:any) => ({ ...prevPlatf, [i]: !prevPlatf[i] }))} 
+              checked={platf[i]}
+            />
+            <Pressable 
+              onPress={() => setPlatf((prevPlatf:any) => ({ ...prevPlatf, [i]: !prevPlatf[i] }))} 
+              style={{width:'100%'}}>
+              <Text style={stylesTexts.normal}>{i}</Text>
+            </Pressable>
+          </View>
+        )})}
       </View>
 
 
       {/* JOGOS */}
       
-
-      <View style={styles.containerLists}>
-        <Text style={{color: "#ddd", fontSize: 20, marginBottom:10, marginTop:10,}}>Jogos</Text>
-        <View style={styles.itemList} >
+      <View style={{marginBottom:10}}>
+        <Text style={stylesTexts.h2}>Jogos</Text>
+        <View style={styles.itemList /* esse stylo é desnecessario e pode ser chamado só uma vez */} >
           <MyCheckbox
             onChange={() => setValorantChecked(!valorantChecked)}
             checked={valorantChecked}
           ></MyCheckbox>
           <Pressable onPress={() => setValorantChecked(!valorantChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Valorant</Text>
+            <Text style={stylesTexts.normal}>Valorant</Text>
           </Pressable>
         </View>
 
@@ -177,7 +236,7 @@ function validationInfos(){
             checked={minecraftChecked}
           />
           <Pressable onPress={() => setMinecraftChecked(!minecraftChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Minecraft</Text>
+            <Text style={stylesTexts.normal}>Minecraft</Text>
           </Pressable>
         </View>
 
@@ -187,7 +246,7 @@ function validationInfos(){
             checked={csgoChecked}
           />
           <Pressable onPress={() => setCsgoChecked(!csgoChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Conter-Strike</Text>
+            <Text style={stylesTexts.normal}>Conter-Strike</Text>
           </Pressable>
         </View>
 
@@ -197,42 +256,13 @@ function validationInfos(){
             checked={RocketLeagueChecked}
           />
           <Pressable onPress={() => setRocketLeagueChecked(!RocketLeagueChecked)} style={{width:'100%'}}>
-            <Text style={styles.titlesLists}>Rocket-League</Text>
+            <Text style={stylesTexts.normal}>Rocket-League</Text>
           </Pressable>
         </View>
       </View>
 
 
-      <View style={styles.containerButtons}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            /*cancelar ações*/
-          }}
-        >
-          <Text>Cancelar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            validationInfos()
-          }}
-        >
-          <Text>Salvar</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View >
-        <TouchableOpacity
-          style={styles.buttonApagar}
-          onPress={() => {
-            /*apagar conta*/
-          }}
-        >
-          <Text style={{ color: "red"}}>Apagar Conta</Text>
-        </TouchableOpacity>
-      </View>
+      <Botoes/>
       </ScrollView>
     </SafeAreaView>
   );
@@ -241,15 +271,11 @@ function validationInfos(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 10,
-    paddingRight: 10,
-    width: "100%",
-    height: "100%",
-    justifyContent: 'center',
+    paddingHorizontal: 12,
   },
 
   infos: {
-    paddingTop: 20,
+    paddingVertical:5
   },
 
   errorMessage:{
@@ -257,45 +283,7 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
     paddingBottom: 5,
-},
-
-  textInput: {
-    color: "#ddd",
-    padding: 13,
-    fontSize: 15,
-    borderWidth: 1,
-    borderRadius: 30,
-    borderColor: "#ddd",
-    height: 50,
   },
-
-  textInputBox: {
-    color: "#ddd",
-    padding: 13,
-    fontSize: 15,
-    borderWidth: 1,
-    borderRadius: 30,
-    borderColor: "#ddd",
-    height: 100,
-  },
-
-  titles: {
-    color: "#ddd",
-    fontSize: 20,
-    //marginBottom: 10,
-  },
-
-  titlesBox:{
-    color: "#ddd",
-    fontSize: 20,
-    marginBottom: 10,
-  },
-
-  containerLists: {
-    marginTop: 5,
-    height: 200,
-  },
-
   checkboxBase: {
     width: 24,
     height: 24,
@@ -303,55 +291,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 4,
     borderWidth: 0.5,
-    borderColor: "#ddd",
+    borderColor: colors.gray,
     backgroundColor: "transparent",
+    margin:5
   },
-
-  checkboxChecked: {
-    backgroundColor: "#ddd",
-  },
-
-  titlesLists: {
-    color: "#ddd",
-    fontSize: 15,
-    marginLeft: 5,
-  },
-
+//  apagar depois
   itemList: {
-    flex: 1,
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
-  },
-
-  containerButtons: {
-    flex: 1,
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-around",
-  },
-
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    justifyContent: "center",
-    padding: 10,
-    width: "45%",
-    height: 50,
-    borderRadius: 30,
-    marginBottom: 15,
-    marginTop:15,
-  },
-
-  buttonApagar: {
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 10,
-    width: "100%",
-    height: 50,
-    borderRadius: 30,
-    marginBottom: 20,
-    borderWidth: 0.5,
-    borderColor: 'red',
   },
 });

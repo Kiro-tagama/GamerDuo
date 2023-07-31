@@ -95,11 +95,10 @@ export function useStyle() {
       backgroundColor:theme.colors.background,
       borderRadius:30,
       paddingHorizontal:20,
-      fontSize:20,
+      fontSize:14,
       color:theme.colors.text
     },
     bt:{
-      height: 60, 
       width: '90%', 
       borderColor: theme.colors.border, 
       borderWidth: 1, 
@@ -107,7 +106,8 @@ export function useStyle() {
       backgroundColor:theme.colors.text,
       borderRadius:30,
       padding:10,
-      alignItems:"center"
+      alignItems:"center",
+      justifyContent:'center'
     },
     btText:{
       color:theme.colors.background
@@ -179,8 +179,9 @@ export function useStyle() {
   })
 
   const stylesTexts = StyleSheet.create({
-    h1:{color:theme.colors.text, fontSize: 36, fontWeight: 'bold',margin:2},
-    h2:{color:theme.colors.text, fontSize: 24, fontWeight: "500",margin:2},
+    h1:{color:theme.colors.text, fontSize: 36, fontWeight: 'bold',margin:5},
+    h2:{color:theme.colors.text, fontSize: 26, fontWeight: "500",margin:3},
+    h3:{color:theme.colors.text, fontSize: 20, fontWeight: "500",margin:2},
     normal:{color:theme.colors.text,fontSize:14,margin:2},
     small:{color:colors.gray,fontSize:12,margin:2}
   })

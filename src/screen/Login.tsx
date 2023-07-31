@@ -57,7 +57,7 @@ export function Login() {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={[stylesTexts.h1,{marginVertical:0}]}>Gamer Duo</Text>
       <Text style={stylesTexts.h2}>Bem-vindo</Text>
-      <Text style={[stylesTexts.h2,{marginTop:40,marginBottom:20}]}>{type == 'login' ? "Login" : "Cadastro"}</Text>
+      <Text style={[stylesTexts.h1,{marginTop:40,marginBottom:20}]}>{type == 'login' ? "Login" : "Cadastro"}</Text>
       {type == 'login' ? null :
       <TextInput
         style={stylesLogin.input}
@@ -76,7 +76,7 @@ export function Login() {
       />
       <View style={stylesLogin.input}>
         <TextInput
-          style={{fontSize:20,color:stylesLogin.input.color,flex:1}}
+          style={{fontSize:14,color:stylesLogin.input.color,flex:1}}
           placeholder="Senha"
           textContentType='password'
           onChangeText={text => setPassword(text)}
