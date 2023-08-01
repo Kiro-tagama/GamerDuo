@@ -4,6 +4,7 @@ import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestor
 import { useEffect, useState } from "react"
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { delUser } from "../api/api";
 
 const auth = getAuth(Firebase)
 const db = getFirestore(Firebase)
@@ -95,5 +96,14 @@ export function Auth() {
     console.log('saiu');
   }
 
-  return {loginAcount,createAcount,deslog,user,errLogin,setErrLogin}
+  async function deleteMe() {
+    await delUser(user.id)
+    await signOut(auth)
+    await AsyncStorage.clear()
+    .then(()=>{
+      setUser(null)
+    })
+  }
+
+  return {loginAcount,createAcount,deslog,deleteMe,user,errLogin,setErrLogin}
 }

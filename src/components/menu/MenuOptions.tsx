@@ -1,7 +1,7 @@
 import { TouchableHighlight,TouchableOpacity, View, Image, Text, Modal } from "react-native";
 import { Feather, MaterialIcons, Octicons } from '@expo/vector-icons';
 import useMenu from "../../hooks/useMenu";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextArea } from "../../firebase/ContextoProvider";
 import { useStyle } from "../../style/style";
 import { EditPerfil } from "../../screen/EditPerfil";
@@ -13,6 +13,9 @@ export function MenuOptions() {
   const { stylesMenu } = useStyle()
 
   const [modal,setModal]=useState(false)
+  
+  // @ts-ignore
+  useEffect(()=>{page != "profile" ? setModal(false):null},[])
 
   const colorActive={
     dark:stylesMenu.active.backgroundColor,

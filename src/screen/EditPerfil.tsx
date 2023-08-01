@@ -10,13 +10,14 @@ import {
   Vibration,
   TouchableHighlight,
 } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { useStyle } from "../style/style";
 import { colors } from "../style/theme";
+import { ContextArea } from "../firebase/ContextoProvider";
 
 // @ts-ignore
 function MyCheckbox({ onChange, checked }) {
@@ -60,6 +61,8 @@ function Divider() {
 
 
 export function EditPerfil() {
+  //@ts-ignore
+  // const {deleteMe}=useContext(ContextArea)
   const {stylesTexts,stylesLogin} = useStyle()
 
   ///
@@ -124,9 +127,7 @@ export function EditPerfil() {
         <TouchableHighlight
           style={[stylesLogin.input, { borderColor: colors.red, width: '100%', justifyContent: 'center' }]}
           underlayColor={colors.red}
-          onPress={() => {
-            /*apagar conta*/
-          } }
+          onPress={() => {}}
         >
           <Text style={[stylesTexts.h3, { color: colors.red }]}>Apagar Conta</Text>
         </TouchableHighlight>

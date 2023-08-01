@@ -65,6 +65,7 @@ export function Login() {
         onChangeText={text => setName(text)}
         value={name}
         placeholderTextColor={colors.gray}
+        editable={anime? false:true}
       />}
       <TextInput
         style={stylesLogin.input}
@@ -73,6 +74,7 @@ export function Login() {
         value={email}
         placeholderTextColor={colors.gray}
         keyboardType="email-address"
+        editable={anime? false:true}
       />
       <View style={stylesLogin.input}>
         <TextInput
@@ -83,6 +85,7 @@ export function Login() {
           value={password}
           placeholderTextColor={colors.gray}
           secureTextEntry={viewPass}
+          editable={anime? false:true}
         />
         <TouchableOpacity
           onPress={()=>setViewPass(!viewPass)}
