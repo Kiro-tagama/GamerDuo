@@ -36,3 +36,14 @@ export async function getAllchats(id:string){
     console.error('Erro ao chamar a API:', error);
   }
 }
+
+export async function delUser(id:string) {
+  try {
+    await axios.delete(url+"/deluser/"+id)
+    .then((i)=>console.log("Conta DELETADA "+ i))
+    .catch(err=>console.log(err))
+    return 
+  } catch (error) {
+    console.error('Erro ao chamar a API:', error);
+  }
+}

@@ -19,6 +19,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { useStyle } from "../style/style";
 import { colors } from "../style/theme";
+import { ContextArea } from "../firebase/ContextoProvider";
 
 // @ts-ignore
 function MyCheckbox({ onChange, checked }) {
