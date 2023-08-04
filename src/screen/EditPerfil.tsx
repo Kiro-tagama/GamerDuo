@@ -73,7 +73,7 @@ function Divider() {
 
 export function EditPerfil() {
   const { stylesTexts, stylesLogin } = useStyle();
-  const [nome, setNome] = useState("");
+  const [nome, setNome] = useState<string>('');
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
   const [RocketLeagueChecked, setRocketLeagueChecked] = useState(false);
@@ -173,7 +173,6 @@ export function EditPerfil() {
 
         {/* INFOS */}
 
-        <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
           <Text style={stylesTexts.h2}>Nome</Text>
           {errorMessage ? (
             <Text style={styles.errorMessage}>{errorMessage}</Text>
@@ -182,12 +181,11 @@ export function EditPerfil() {
             placeholder="João da Silva"
             style={[stylesLogin.input, { width: "100%", marginTop: 4 }]}
             placeholderTextColor={colors.gray}
-            onChangeText={(text: any) => setNome(text)}
+            onChangeText={(text)=>setNome(text)}
             value={nome}
           />
-        </Pressable>
 
-        <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
+        
           <Text style={stylesTexts.h2}>Email</Text>
           {errorMessage ? (
             <Text style={styles.errorMessage}>{errorMessage}</Text>
@@ -200,9 +198,7 @@ export function EditPerfil() {
             onChangeText={(text: string) => setEmail(text)}
             value={email}
           />
-        </Pressable>
 
-        <Pressable onPress={Keyboard.dismiss} style={styles.infos}>
           <Text style={stylesTexts.h2}>Biografia</Text>
           <TextInput
             style={[
@@ -217,7 +213,6 @@ export function EditPerfil() {
             onChangeText={(text: string) => setBio(text)}
             value={bio}
           />
-        </Pressable>
       </View>
     )
   }
@@ -394,7 +389,7 @@ export function EditPerfil() {
         />
       </TouchableOpacity>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Infos />
+        <Infos/>
         <Plataformas />
         <Jogos />
         <Botoes />

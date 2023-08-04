@@ -94,7 +94,9 @@ export function MenuOptions() {
               style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
               onPress={()=>{
                 /* @ts-ignore */
-                nav.navigate( 'EditPerfil' )}}
+                nav.navigate( 'EditPerfil' )
+                setModal(false)
+              }}
             >
               <Octicons name="gear" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>
@@ -102,13 +104,18 @@ export function MenuOptions() {
               style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
               onPress={()=>{
                 /* @ts-ignore */
-                nav.navigate( 'infoApp' )}}
+                nav.navigate( 'infoApp' )
+                setModal(false)
+              }}
             >
               <Feather name="info" size={24} color={stylesMenu.active.backgroundColor} />
             </TouchableOpacity>
             <TouchableOpacity 
               style={[stylesMenu.opts,{backgroundColor:stylesMenu.active.color}]}
-              onPress={()=>{deslog()}}
+              onPress={()=>{
+                deslog()
+                setModal(false)
+              }}
             >
               <MaterialIcons name="logout" size={24} color="red" />
             </TouchableOpacity>
