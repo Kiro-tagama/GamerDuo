@@ -33,10 +33,7 @@ export function Chat() {
         :
         <FlatList
         data={chats}
-        renderItem={({item}) =>{
-          // @ts-ignore
-          return <ChatCard perfil={item}/>
-        }}
+        renderItem={({item}) =><ChatCard perfil={item}/>}
         keyExtractor={(item:any) => item.id}
         showsVerticalScrollIndicator={false}
         />

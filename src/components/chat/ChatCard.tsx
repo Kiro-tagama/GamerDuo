@@ -1,16 +1,20 @@
+import { useContext } from "react";
+import { ContextArea } from "../../firebase/ContextoProvider";
+
 import { TouchableOpacity, Image, View, Text } from "react-native";
 import { useStyle } from "../../style/style";
 import useMenu from "../../hooks/useMenu";
-import { conversa } from "../../api/fakeProfiles";
-import { ContextArea } from "../../firebase/ContextoProvider";
-import { useContext } from "react";
 
 interface PropsList{
   perfil:{
     id: number;
     names: any[];
     img: string;
-    mensagem: any[],
+    mensagem:[
+      {
+        text:string,
+        time:[{},{}]}
+    ],
   }
 }
 
@@ -19,9 +23,11 @@ export function ChatCard({perfil}:PropsList){
   const {user}=useContext(ContextArea)
   const {nav}=useMenu()
   const { stylesChat, stylesTexts } =useStyle()
-
-  var txt =conversa[conversa.length-1].mensagem
   
+  //@ts-ignore
+  const txt= perfil.mensagem.length != 0 ? perfil.mensagem[perfil.mensagem.length-1].text : "Inicie uma conversa"
+  //@ts-ignore
+  const hora= perfil.mensagem.length != 0 ? perfil.mensagem[perfil.mensagem.length-1].time : null
   const data= perfil.names[0].id === user.id ? perfil.names[1] : perfil.names[0]
 
   return(
@@ -31,12 +37,15 @@ export function ChatCard({perfil}:PropsList){
       style={stylesChat.cardChat}
     >
       <Image
-        style={{height:65,width:65,borderRadius:60}}
+        style={{height:65,width:65,borderRadius:20}}
         source={{uri:data.img}}
       />
-      <View style={{marginHorizontal:10}}>
+      <View style={{marginHorizontal:10,flex:1}}>
         <Text style={stylesTexts.normal}>{data.name}</Text>
-        <Text style={stylesTexts.small}>{txt.substring(0, 34)} {txt.length >= 35 ? '...':null}</Text>
+        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+          <Text style={stylesTexts.small}>{txt.substring(0, 34)} {txt.length >= 35 ? '...':null}</Text>
+          <Text style={stylesTexts.small}>{hora?hora[0]+":"+hora[1]:null}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   )

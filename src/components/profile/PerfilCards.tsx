@@ -1,10 +1,9 @@
 import { View, Image, Text, TouchableHighlight } from "react-native"
-import { agents } from "../api/valorantApi"
+import { agents } from "../../api/valorantApi"
 import { Feather } from "@expo/vector-icons";
-import { colors } from "../style/theme";
 import { useContext } from "react";
-import { ContextArea } from "../firebase/ContextoProvider";
-import { useStyle } from "../style/style";
+import { ContextArea } from "../../firebase/ContextoProvider";
+import { useStyle } from "../../style/style";
 
 export function PerfilCards({cardData}:any) {
   // @ts-ignore

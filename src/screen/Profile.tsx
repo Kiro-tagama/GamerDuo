@@ -1,11 +1,12 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
 import { Menu } from "../components/menu/Menu";
 import { useStyle } from "../style/style";
-import { PerfilCards } from "../components/PerfilCards";
+import { PerfilCards } from "../components/profile/PerfilCards";
 import { useRoute } from "@react-navigation/native";
 import { colors } from "../style/theme";
 import { useContext } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
+import { ProfileInfos } from "../components/profile/ProfileInfos";
 
 export function Profile(){
   // @ts-ignore
@@ -28,9 +29,19 @@ export function Profile(){
         }
         <Text style={stylesTexts.h2}>{data.name}</Text>
 
-        <View style={{margin:20}}/>
+        <ProfileInfos info={data}/>
 
-        <PerfilCards cardData={data}/>
+        { params == null // && data.bio.length != 0 
+          ?
+          <Text style={stylesTexts.small}>Segure por um tempo a tua foto de perfil no menu abaixo para edita-lo</Text>
+          :null
+        }
+      </View>
+      <Menu/>
+    </>
+  )
+}
+{/* <PerfilCards cardData={data}/>
         
         { // @ts-ignore
         params == null||params.id == user.id ?
@@ -42,9 +53,4 @@ export function Profile(){
             <Text style={stylesTexts.h1}>+</Text>
           </TouchableHighlight>
           :null
-        }
-      </View>
-      <Menu/>
-    </>
-  )
-}
+        } */}
