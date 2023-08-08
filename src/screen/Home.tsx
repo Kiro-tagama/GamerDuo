@@ -47,9 +47,11 @@ export function Home() {
         </View>:
         // @ts-ignore
         <Swiper
-          ref={ref => setSwiperRef(ref)}
+          ref={ref => {setSwiperRef(ref), 
+            //setLengthData(ref?.state.previousCardIndex +1)
+          }}
           cards={perfil}
-          renderCard={(perfil)=> <Card profile={perfil}/>}
+          renderCard={(perfil)=> <Card profile={perfil} number={Math.floor(Math.random() * 22)}/>}
           keyExtractor={(data:any)=> data.id}
           animateCardOpacity={true}
           cardVerticalMargin={0}
@@ -64,9 +66,9 @@ export function Home() {
           stackScale={16}
 
           //@ts-ignore na liby n existe o segundo parametro então
-          onSwipedLeft={(i,card)=>noLike(card)}
+          onSwipedLeft={(i,card)=>{noLike(card)}}
           //@ts-ignore
-          onSwipedRight={(i,card)=>like(card)}
+          onSwipedRight={(i,card)=>{like(card)}}
 
           overlayLabels={{
             left: {

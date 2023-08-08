@@ -36,6 +36,20 @@
     },
     "updates": {
       "url": "https://u.expo.dev/142717a3-e41a-44d9-bcd1-e7b2069ba4a8"
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+        "android": {
+          "compileSdkVersion": 31,
+          "targetSdkVersion": 31,
+          "buildToolsVersion": "31.0.0"
+        },
+        "ios": {
+          "deploymentTarget": "13.0"
+        }}
+      ]
+    ]
   }
 }

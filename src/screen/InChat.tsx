@@ -23,7 +23,8 @@ export function InChat() {
             //@ts-ignore
             data={conversa.mensagem}
             renderItem={({item}) => <Mensagem mensagem={item}/>}
-            keyExtractor={(item) => item.id}
+            // definindo o horario da mensagem como id chave [0]H,[1]Min,[2]Seg
+            keyExtractor={(item) => item.time[0].toString()+item.time[1].toString()+item.time[2].toString()}
             showsVerticalScrollIndicator={false}
             onContentSizeChange={scrollToBottom}
           /> : null 

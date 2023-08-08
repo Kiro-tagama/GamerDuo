@@ -9,7 +9,7 @@ export function ProfileInfos({data}:any) {
   const games=["R6","vava","COD","1","2"]
 
   return(
-    <ScrollView style={{flex:1,width:'90%'}}>
+    <ScrollView key={null} style={{flex:1,width:'90%'}}>
       <Text style={subT}>Bio</Text>
       <Text style={stylesTexts.normal}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi fuga quibusdam voluptatum neque aut eaque? Aperiam, voluptates porro non nam consequuntur labore magni, rem facilis suscipit earum tenetur sint culpa?</Text>
       <Text style={subT}>Plataforma</Text>

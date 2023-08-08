@@ -19,7 +19,7 @@ export function useLogin() {
       await loginAcount(email,password):
       await createAcount(name,email,password)
     }
-    setTimeout(()=>{setAnime(false)},1000)
+    setTimeout(()=>{setAnime(false)},2000)
   }
 
   function handleType (){

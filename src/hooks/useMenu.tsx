@@ -5,16 +5,12 @@ import { useColorScheme } from "react-native";
 import { getAlluser } from "../api/api";
 import { ContextArea } from "../firebase/ContextoProvider";
 
-interface PropsPage{
-  name:'home'|'chat'|'profile'|'inChat'|'login'
-}
-
 export default function useMenu() {
   const urlPage=useRoute()
+  const page=urlPage.name
+
   //@ts-ignore
   const {user}=useContext(ContextArea)
-  //@ts-ignore
-  const [page, setPage]= useState<PropsPage>(urlPage.name)
 
   const nav=useNavigation()
   
@@ -33,7 +29,7 @@ export default function useMenu() {
 
   const [swiperRef, setSwiperRef] = useState<any>();
   const [perfil,setPerfil]=useState<any>(null)
-
+  
   useEffect(()=>{
     async function data(){
       setPerfil(await getAlluser(user.id))

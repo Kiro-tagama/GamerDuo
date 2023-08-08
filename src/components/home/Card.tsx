@@ -11,13 +11,14 @@ interface Card{
     img: string;
     agentFav: number;
     consoles: Array<any>; //arrumar depois
-  }
+  },
+  number:number
 }
 
-export function Card({profile}:Card){
+export function Card({profile,number}:Card){
   const { stylesHome } = useStyle()
   const {active} = useMenu()
-  const agent=agents[Math.floor(Math.random() * 22)]
+  const agent=agents[3]
   
   return(
     <View style={[stylesHome.card,active,{backgroundColor:"#"+agent.backgroundGradientColors[0]||"#222"}]}>
