@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { useStyle } from '../style/style';
+import { useNavigation } from '@react-navigation/native';
 
 const appInfo = {
   nome: 'Gamer Duo',
@@ -12,11 +13,12 @@ const appInfo = {
 
 export function InfoApp(){
   const {stylesTexts} = useStyle()
+  const nav = useNavigation();
 
   return (
     <View style={{flex:1, margin:16}}>
     <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:'center',marginVertical:10}}>
-      <TouchableOpacity style={{marginRight:20}} onPress={() => console.log('Título clicado')}>
+      <TouchableOpacity style={{marginRight:20}} onPress={() => nav.goBack()}>
         <AntDesign name="left" size={24} color={stylesTexts.h2.color}/>
       </TouchableOpacity>
         <Text style={stylesTexts.h2}>Informações do App</Text>

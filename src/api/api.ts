@@ -1,8 +1,8 @@
 import axios from "axios";
 //@ts-ignore
-//import {APP_URL_API} from "@env";
+import {APP_URL_API} from "@env";
 
-const url='https://back-gamer-duo.vercel.app/'
+const url=APP_URL_API
 
 export async function getUser(id:string){
   try {

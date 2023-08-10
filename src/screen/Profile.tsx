@@ -16,7 +16,7 @@ export function Profile(){
   const {params}=useRoute()
   // @ts-ignore
   const data= params == null || params.id == user.id ? user: params 
-
+  
   return(
     <>
       <View style={{flex:1, alignItems:'center'}}>
@@ -29,9 +29,9 @@ export function Profile(){
         }
         <Text style={stylesTexts.h2}>{data.name}</Text>
 
-        <ProfileInfos info={data}/>
+        <ProfileInfos data={data}/>
 
-        { params == null // && data.bio.length != 0 
+        { params == null && data.bio.length == 0
           ?
           <Text style={stylesTexts.small}>Segure por um tempo a tua foto de perfil no menu abaixo para edita-lo</Text>
           :null

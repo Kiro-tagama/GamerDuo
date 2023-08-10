@@ -183,7 +183,13 @@ export function useStyle() {
     h2:{color:theme.colors.text, fontSize: 26, fontWeight: "500",margin:3},
     h3:{color:theme.colors.text, fontSize: 20, fontWeight: "500",margin:2},
     normal:{color:theme.colors.text,fontSize:14,margin:2},
-    small:{color:colors.gray,fontSize:12,margin:2}
+    small:{color:colors.gray,fontSize:12,margin:2},
+    errorMessage: {
+      fontSize: 12,
+      color: colors.red,
+      fontWeight: "bold",
+      paddingBottom: 5,
+    },
   })
 
 

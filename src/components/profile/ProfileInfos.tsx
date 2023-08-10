@@ -5,32 +5,39 @@ export function ProfileInfos({data}:any) {
   const { stylesTexts,stylesLogin } =useStyle()
   const subT= [stylesTexts.h3,{marginTop:10,marginBottom:5}]
 
-  const platforms=["PlayStation","Xbox","PC","NintendoSwitch","Mobile"]
-  const games=["R6","vava","COD","1","2"]
-
   return(
-    <ScrollView key={null} style={{flex:1,width:'90%'}}>
+    <ScrollView key={1} style={{flex:1,width:'90%'}}>
       <Text style={subT}>Bio</Text>
-      <Text style={stylesTexts.normal}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi fuga quibusdam voluptatum neque aut eaque? Aperiam, voluptates porro non nam consequuntur labore magni, rem facilis suscipit earum tenetur sint culpa?</Text>
+      <Text style={stylesTexts.normal}>{data.bio}</Text>
       <Text style={subT}>Plataforma</Text>
       <View style={{flexDirection:"row",flexWrap:'wrap'}}>
-        {platforms.map(i=><Text 
-          style={{
-            backgroundColor:stylesLogin.bt.backgroundColor,
-            color:stylesLogin.btText.color,
-            margin:2,padding:2,borderRadius:8
-          }}> {i} </Text>)}
+        {
+          Object.keys(data.platforms)
+          .filter(item => data.platforms[item])
+          .map(i=>
+            <Text 
+            style={{
+              backgroundColor:stylesLogin.bt.backgroundColor,
+              color:stylesLogin.btText.color,
+              margin:2,padding:2,borderRadius:8
+            }}> {i} </Text>
+        )}
       </View>
       <Text style={subT}>Jogos</Text>
       <View style={{flexDirection:"row",flexWrap:'wrap'}}>
-        {games.map(i=><Text 
-          style={{
-            backgroundColor:stylesLogin.bt.backgroundColor,
-            color:stylesLogin.btText.color,
-            margin:2,padding:2,borderRadius:8
-          }}> {i} </Text>)}
+        {
+          Object.keys(data.games)
+          .filter(item => data.games[item])
+          .map(i=>
+            <Text 
+            style={{
+              backgroundColor:stylesLogin.bt.backgroundColor,
+              color:stylesLogin.btText.color,
+              margin:2,padding:2,borderRadius:8
+            }}> {i} </Text>
+          )}
       </View>
-      <Text style={subT}>Fotos</Text>
+      {/* <Text style={subT}>Fotos</Text> */}
     </ScrollView>
   )
 }

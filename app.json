@@ -4,6 +4,9 @@
     "slug": "gamerduo",
     "version": "1.0.0",
     "orientation": "portrait",
+    "notification":{
+      "icon":"./assets/icon.png"
+    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -49,6 +52,12 @@
         "ios": {
           "deploymentTarget": "13.0"
         }}
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png"
+        }
       ]
     ]
   }

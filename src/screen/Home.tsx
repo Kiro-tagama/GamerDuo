@@ -47,7 +47,7 @@ export function Home() {
         </View>:
         // @ts-ignore
         <Swiper
-          ref={ref => {setSwiperRef(ref), 
+          ref={ref => {setSwiperRef(ref)
             //setLengthData(ref?.state.previousCardIndex +1)
           }}
           cards={perfil}

@@ -34,15 +34,9 @@ export function Auth() {
             name:name,
             email:email,
             img:'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
-            profilesValorant:[],
             matchs:[],
             desmatchs:[],
             chats:[],
-            consoles:[
-              {"id":0,"consta":false,"name":"pc"},
-              {"id":1,"consta":false,"name":"xbox"},
-              {"id":3,"consta":false,"name":"psn"},
-            ]
           }
         ).then(()=>loginAcount(email,pass))
       } catch(e){
@@ -105,5 +99,5 @@ export function Auth() {
     })
   }
 
-  return {loginAcount,createAcount,deslog,deleteMe,user,errLogin,setErrLogin}
+  return {loginAcount,createAcount,deslog,deleteMe,user,setUser,errLogin,setErrLogin}
 }
