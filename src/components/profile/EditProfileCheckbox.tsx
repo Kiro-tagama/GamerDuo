@@ -62,13 +62,14 @@ export function EditProfileCheckbox({type}:PropsDados) {
   return (
     <View style={{ marginBottom: 10 }}>
       <Text style={stylesTexts.h2}>{type == "games" ? "Jogos" : "Plataformas"}</Text>
-      {use.map((i: string) => {
+      {use.map((i: string, index:number) => {
         return (
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
             }}
+            key={index}
           >
             <MyCheckbox
               //recorri ao gpt pq n lembrava como fazer essa parte ksk

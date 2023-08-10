@@ -11,7 +11,7 @@ import { ProfileInfos } from "../components/profile/ProfileInfos";
 export function Profile(){
   // @ts-ignore
   const {user}=useContext(ContextArea)
-  const { stylesChat, stylesTexts, stylesProfile } =useStyle()
+  const { stylesTexts, stylesProfile } =useStyle()
 
   const {params}=useRoute()
   // @ts-ignore
@@ -31,7 +31,7 @@ export function Profile(){
 
         <ProfileInfos data={data}/>
 
-        { params == null && data.bio.length == 0
+        { params == null && data.bio == undefined || data.bio.length <= 0 
           ?
           <Text style={stylesTexts.small}>Segure por um tempo a tua foto de perfil no menu abaixo para edita-lo</Text>
           :null

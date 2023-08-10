@@ -37,6 +37,9 @@ export function Auth() {
             matchs:[],
             desmatchs:[],
             chats:[],
+            bio:'',
+            games:{},
+            platforms:{}
           }
         ).then(()=>loginAcount(email,pass))
       } catch(e){
