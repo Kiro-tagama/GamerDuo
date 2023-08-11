@@ -8,7 +8,7 @@ export function ProfileInfos({data}:any) {
   return(
     <ScrollView key={1} style={{flex:1,width:'90%'}}>
       <Text style={subT}>Bio</Text>
-      <Text style={stylesTexts.normal}>{data.bio}</Text>
+      <Text style={stylesTexts.normal}>{data.bio ||null}</Text>
       <Text style={subT}>Plataforma</Text>
       <View style={{flexDirection:"row",flexWrap:'wrap'}}>
         {

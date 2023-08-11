@@ -12,6 +12,7 @@ import { InfoApp } from "../screen/InfoApp"
 import {ContextArea} from '../firebase/ContextoProvider'
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { View } from "react-native"
+import { useNotification } from "../hooks/useNotification"
 
 const Stack= createNativeStackNavigator()
 
@@ -19,6 +20,8 @@ function Router({theme}:any) {
   //@ts-ignore
   const {user}=useContext(ContextArea)
   const insets = useSafeAreaInsets();
+  
+  const {NotificationModal} =useNotification()
 
   return(
     <View style={{ flex: 1, paddingTop: insets.top, backgroundColor:theme.colors.background }}>
@@ -36,6 +39,7 @@ function Router({theme}:any) {
       </>
       }
     </Stack.Navigator>
+      {user?<NotificationModal/>:null}
     </View>
   )
 }

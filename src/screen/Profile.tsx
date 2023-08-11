@@ -17,6 +17,9 @@ export function Profile(){
   // @ts-ignore
   const data= params == null || params.id == user.id ? user: params 
   
+  console.log(data);
+  
+
   return(
     <>
       <View style={{flex:1, alignItems:'center'}}>
@@ -29,7 +32,8 @@ export function Profile(){
         }
         <Text style={stylesTexts.h2}>{data.name}</Text>
 
-        <ProfileInfos data={data}/>
+        { data.bio || data.platform || data.games?
+          <ProfileInfos data={data}/>: <View style={{flex:1}}/>}
 
         { params == null && data.bio == undefined || data.bio.length <= 0 
           ?
