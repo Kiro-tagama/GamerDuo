@@ -17,9 +17,6 @@ export function Profile(){
   // @ts-ignore
   const data= params == null || params.id == user.id ? user: params 
   
-  console.log(data);
-  
-
   return(
     <>
       <View style={{flex:1, alignItems:'center'}}>

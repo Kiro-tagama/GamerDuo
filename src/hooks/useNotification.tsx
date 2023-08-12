@@ -1,16 +1,14 @@
-import {useContext, useState} from "react"
-import { TouchableOpacity } from "react-native";
-import { Modal, Image, View, Text} from "react-native";
+import { useContext, useState} from "react"
+import { useNavigation } from "@react-navigation/native";
+import { ContextArea } from "../firebase/ContextoProvider";
+import { Modal, Image, View, Text, TouchableOpacity} from "react-native";
 import { useStyle } from "../style/style";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../style/theme";
 import { LinearGradient } from "expo-linear-gradient";
-import { ContextArea } from "../firebase/ContextoProvider";
-import { useNavigation } from "@react-navigation/native";
 
 export function useNotification() {
-  const [notif,setNotif]= useState<number>(0)
-
+  
   const [modal,setModal]= useState<boolean>(false)
   const [matchData,setMatchData]= useState({
     img:"https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80",

@@ -14,8 +14,8 @@ export function ProfileInfos({data}:any) {
         {
           Object.keys(data.platforms)
           .filter(item => data.platforms[item])
-          .map(i=>
-            <Text 
+          .map((i,index)=>
+            <Text key={index}
             style={{
               backgroundColor:stylesLogin.bt.backgroundColor,
               color:stylesLogin.btText.color,
@@ -28,8 +28,8 @@ export function ProfileInfos({data}:any) {
         {
           Object.keys(data.games)
           .filter(item => data.games[item])
-          .map(i=>
-            <Text 
+          .map((i,index)=>
+            <Text key={index}
             style={{
               backgroundColor:stylesLogin.bt.backgroundColor,
               color:stylesLogin.btText.color,
