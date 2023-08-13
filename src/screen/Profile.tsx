@@ -32,8 +32,7 @@ export function Profile(){
         { data.bio || data.platform || data.games?
           <ProfileInfos data={data}/>: <View style={{flex:1}}/>}
 
-        { params == null && data.bio == undefined || data.bio.length <= 0 
-          ?
+        { data == user && data.bio == "" ?
           <Text style={stylesTexts.small}>Segure por um tempo a tua foto de perfil no menu abaixo para edita-lo</Text>
           :null
         }

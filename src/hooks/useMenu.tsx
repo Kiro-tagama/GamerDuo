@@ -35,7 +35,7 @@ export default function useMenu() {
       setPerfil(await getAlluser(user.id))
     }
     data()
-  },[])
+  },[page=="home"])
 
   return {page,active,nav,swiperRef, setSwiperRef,perfil}
 }

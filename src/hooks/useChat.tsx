@@ -35,7 +35,7 @@ export function useChat() {
 
     const data=new Date()
     const dia=[data.getDate(),data.getMonth(),data.getFullYear()]
-    const hora=[data.getHours(),data.getMinutes(),data.getSeconds()]
+    const hora=[data.getHours(),data.getMinutes() < 10? "0"+data.getMinutes() :data.getMinutes(),data.getSeconds()]
 
     //@ts-ignore
     await updateDoc(doc(db, "chats", params.id), {

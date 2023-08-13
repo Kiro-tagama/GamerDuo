@@ -26,7 +26,7 @@ export function useEditProfile() {
       setUser(user)
 
       await updateDoc(doc(db, "users", user.id), user)
-      .then((i)=>console.log("salvo\n",user))
+      .then()
       .catch(e=>console.log(e))
 
       nav.goBack()
