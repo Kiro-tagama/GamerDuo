@@ -3,13 +3,18 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, si
 import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
 import { useEffect, useState } from "react"
 
+import * as expoNotifications from 'expo-notifications';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { delUser } from "../api/api";
+import { Notification } from "./Notification";
 
 const auth = getAuth(Firebase)
 const db = getFirestore(Firebase)
 
 export function Auth() {
+  const {validationToken}=Notification()
+
   const [user,setUser]=useState<any>()
   const [errLogin,setErrLogin]=useState(false)
 
@@ -25,12 +30,14 @@ export function Auth() {
     createUserWithEmailAndPassword(auth, email, pass)
     .then(async (user)=>{
     const data = user.user
+    const token = (await expoNotifications.getExpoPushTokenAsync()).data
     console.log(data.uid);
       try{
         const userRef = doc(collection(db, "users"), data.uid)
         await setDoc(userRef,
           {
             id:data.uid,
+            expoToken: token,
             name:name,
             email:email,
             img:'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
@@ -65,6 +72,7 @@ export function Auth() {
           const userData = userDoc.data();
           await AsyncStorage.setItem("dataUser", JSON.stringify(userData))
           setUser(userData)
+          validationToken()
         } else {
           console.log("Usuário não encontrado no Firestore");
         }

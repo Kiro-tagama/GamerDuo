@@ -46,13 +46,15 @@ export function Match() {
       try {
         const docRef = await addDoc(collection(db, "chats"), {
           names:[
-            {id:user1.id,name:user1.name,img:user1.img},
-            {id:user2.id,name:user2.name,img:user2.img}
+            {id:user1.id,name:user1.name,img:user1.img,expoToken:user1.expoToken},
+            {id:user2.id,name:user2.name,img:user2.img,expoToken:user2.expoToken}
           ],
           mensagem:[]
         });
         await updateDoc(doc(db, "users", user1.id), {chats:arrayUnion(docRef.id)})
         await updateDoc(doc(db, "users", user2.id), {chats:arrayUnion(docRef.id)})
+
+        // isso é necessaro ?
         await updateDoc(doc(db, "chats", docRef.id), {id:docRef.id})
 
         return console.log("Document written with ID: ", docRef.id);

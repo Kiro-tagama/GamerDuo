@@ -1,11 +1,11 @@
-import { Text, View, FlatList, ActivityIndicator} from "react-native";
+import { Text, View, FlatList} from "react-native";
 import { Menu } from "../components/menu/Menu";
 import { useStyle } from "../style/style";
-import { perfis } from '../api/fakeProfiles';
 import { ChatCard } from "../components/chat/ChatCard";
 import { useState, useEffect, useContext } from "react";
 import { getAllchats } from "../api/api";
 import { ContextArea } from "../firebase/ContextoProvider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Chat() {
   //@ts-ignore
@@ -14,10 +14,14 @@ export function Chat() {
   const [chats,setChats]=useState<any|null>(null)
 
   useEffect(()=>{
-    async function name() {
-      setChats(await getAllchats(user.id))
+    async function getChats() {
+      setChats(AsyncStorage.getItem("dataUser"))
+      
+      const dataChats=await getAllchats(user.id)
+      setChats(dataChats)
+      await AsyncStorage.setItem("dataChats", JSON.stringify(dataChats))
     }
-    name()
+    getChats()
   },[])
 
   return(

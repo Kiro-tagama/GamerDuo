@@ -4,8 +4,8 @@
     "slug": "gamerduo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "notification":{
-      "icon":"./assets/icon.png"
+    "notification": {
+      "icon": "./assets/icon.png"
     },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#222"
-      }
+      },
+      "package": "com.kirotagama.gamerduo"
     },
     "web": {
       "favicon": "./assets/min-icon-2x.png"
@@ -44,14 +45,15 @@
       [
         "expo-build-properties",
         {
-        "android": {
-          "compileSdkVersion": 31,
-          "targetSdkVersion": 31,
-          "buildToolsVersion": "31.0.0"
-        },
-        "ios": {
-          "deploymentTarget": "13.0"
-        }}
+          "android": {
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
       ],
       [
         "expo-notifications",
