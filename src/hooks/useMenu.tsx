@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { colors, themaDark, themaLigth } from "../style/theme";
+import { themaDark, themaLigth } from "../style/theme";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useColorScheme } from "react-native";
 import { getAlluser } from "../api/api";

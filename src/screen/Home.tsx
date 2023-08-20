@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { View,Image, ActivityIndicator,Text } from 'react-native';
+import { View, ActivityIndicator,Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { ContextArea } from '../firebase/ContextoProvider';

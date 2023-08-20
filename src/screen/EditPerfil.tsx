@@ -12,7 +12,6 @@ import { useStyle } from "../style/style";
 import { EditProfileInfos } from "../components/profile/EditProfileInfos";
 import { EditProfileImg } from "../components/profile/EditProfileImg";
 import { EditProfileCheckbox } from "../components/profile/EditProfileCheckbox";
-import { useEditProfile } from "../hooks/useEditProfile";
 import { EditProfileButtons } from "../components/profile/EditProfileButtons";
 
 export function EditPerfil() {

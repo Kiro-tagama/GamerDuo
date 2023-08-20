@@ -1,9 +1,7 @@
-import { View, Text, Image, TouchableHighlight } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Menu } from "../components/menu/Menu";
 import { useStyle } from "../style/style";
-import { PerfilCards } from "../components/profile/PerfilCards";
 import { useRoute } from "@react-navigation/native";
-import { colors } from "../style/theme";
 import { useContext } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
 import { ProfileInfos } from "../components/profile/ProfileInfos";
@@ -43,14 +41,14 @@ export function Profile(){
 }
 {/* <PerfilCards cardData={data}/>
         
-        { // @ts-ignore
-        params == null||params.id == user.id ?
-          <TouchableHighlight
-            style={[stylesChat.cardChat,{width:'90%',justifyContent:'center',alignItems:'center',padding:0}]}
-            underlayColor={colors.white}
-            onPress={()=>{}}
-          >
-            <Text style={stylesTexts.h1}>+</Text>
-          </TouchableHighlight>
-          :null
-        } */}
+{ // @ts-ignore
+params == null||params.id == user.id ?
+  <TouchableHighlight
+    style={[stylesChat.cardChat,{width:'90%',justifyContent:'center',alignItems:'center',padding:0}]}
+    underlayColor={colors.white}
+    onPress={()=>{}}
+  >
+    <Text style={stylesTexts.h1}>+</Text>
+  </TouchableHighlight>
+  :null
+} */}

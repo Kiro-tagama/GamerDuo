@@ -4,11 +4,27 @@ import { getFirestore,onSnapshot,doc, updateDoc, arrayUnion } from "firebase/fir
 import { Firebase } from "../firebase/Firebase";
 import { useRoute } from "@react-navigation/native";
 import { ContextArea } from "../firebase/ContextoProvider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getAllchats } from "../api/api";
 
 export function useChat() {
   const {params}=useRoute()
   //@ts-ignore
   const {user}=useContext(ContextArea)
+
+  const [chats,setChats]=useState<any|null>(null)
+
+  useEffect(()=>{
+    async function getChats() {
+      setChats(AsyncStorage.getItem("dataUser"))
+      
+      const dataChats=await getAllchats(user.id)
+      setChats(dataChats)
+      await AsyncStorage.setItem("dataChats", JSON.stringify(dataChats))
+    }
+    getChats()
+  },[])
+  
   
   const flatListRef = useRef()
   const [conversa,setConversa]= useState()
@@ -50,5 +66,5 @@ export function useChat() {
     setTxt('')
   }
 
-  return{flatListRef,conversa,scrollToBottom,txt,setTxt,sendMensagem}
+  return{chats,flatListRef,conversa,scrollToBottom,txt,setTxt,sendMensagem}
 }
