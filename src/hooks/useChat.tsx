@@ -12,17 +12,10 @@ export function useChat() {
   //@ts-ignore
   const {user}=useContext(ContextArea)
 
-  const [chats,setChats]=useState<any|null>(null)
-
+  const db = getFirestore(Firebase)
   useEffect(()=>{
-    async function getChats() {
-      setChats(AsyncStorage.getItem("dataUser"))
-      
-      const dataChats=await getAllchats(user.id)
-      setChats(dataChats)
-      await AsyncStorage.setItem("dataChats", JSON.stringify(dataChats))
-    }
-    getChats()
+    //@ts-ignore
+    onSnapshot(doc(db, "chats", params.id), (doc) => {setConversa(doc.data())});
   },[])
   
   
@@ -36,15 +29,6 @@ export function useChat() {
       flatListRef.current.scrollToEnd({ index: conversa.length - 1, animated: true });
     }
   };
-
-  const db = getFirestore(Firebase)
-  useEffect(()=>{
-      //@ts-ignore
-    onSnapshot(doc(db, "chats", params.id), (doc) => {
-      //@ts-ignore
-      setConversa(doc.data())
-    });
-  },[])
 
   async function sendMensagem() {
     if (txt.length<=0) return
@@ -66,5 +50,5 @@ export function useChat() {
     setTxt('')
   }
 
-  return{chats,flatListRef,conversa,scrollToBottom,txt,setTxt,sendMensagem}
+  return{flatListRef,conversa,scrollToBottom,txt,setTxt,sendMensagem}
 }

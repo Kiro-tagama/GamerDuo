@@ -1,20 +1,17 @@
 import { Firebase } from "./Firebase"
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from 'firebase/auth'
-import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
 import { useEffect, useState } from "react"
 
 import * as expoNotifications from 'expo-notifications';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { delUser } from "../api/api";
-import { Notification } from "./Notification";
 
 const auth = getAuth(Firebase)
 const db = getFirestore(Firebase)
 
 export function Auth() {
-  const {validationToken}=Notification()
-
   const [user,setUser]=useState<any>()
   const [errLogin,setErrLogin]=useState(false)
 
@@ -108,6 +105,15 @@ export function Auth() {
     .then(()=>{
       setUser(null)
     })
+  }
+
+  async function validationToken() {
+    const token = (await expoNotifications.getExpoPushTokenAsync()).data
+    if (user.expoToken != token) {
+      await updateDoc(doc(db, "users", user.id), {chats:token})
+      .then(() => console.log("set token: " + token))
+      .catch((err) => console.log("err ao alterar token"));
+    } 
   }
 
   return {loginAcount,createAcount,deslog,deleteMe,user,setUser,errLogin,setErrLogin}

@@ -22,14 +22,6 @@ export function Notification() {
   const token = async ()=>(await expoNotifications.getExpoPushTokenAsync()).data
   console.log(token);
 
-  async function validationToken() {
-    if (user.expoToken != token) {
-      await updateDoc(doc(db, "users", user.id), {chats:token})
-      .then(() => console.log("set token: " + token))
-      .catch((err) => console.log("err ao alterar token"));
-    } 
-  }
-
   function sendMatchNotification(params:string) {
     // pega token e o id do chat
     // envia a notificação
@@ -60,9 +52,5 @@ export function Notification() {
     // envia a notificação para o chat
   }
   
-
-
-  
-
-  return {notfMatch,setNotfMatch,validationToken}
+  return {notfMatch,setNotfMatch}
 }

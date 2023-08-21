@@ -17,8 +17,8 @@ export default function App() {
   const theme = scheme == "dark"? themaDark : themaLigth
   
   /// permissions 
-  const [statusIMG, requestPermission] = ImagePicker.useMediaLibraryPermissions();
-  const statusNotification  = async ()=> await expoNotifications.getPermissionsAsync();
+  //const [statusIMG, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+  //const statusNotification  = async ()=> await expoNotifications.getPermissionsAsync();
   
   return (
     <ContextProvider>
