@@ -4,20 +4,17 @@ import { getFirestore,onSnapshot,doc, updateDoc, arrayUnion } from "firebase/fir
 import { Firebase } from "../firebase/Firebase";
 import { useRoute } from "@react-navigation/native";
 import { ContextArea } from "../firebase/ContextoProvider";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getAllchats } from "../api/api";
 
 export function useChat() {
   const {params}=useRoute()
   //@ts-ignore
-  const {user}=useContext(ContextArea)
+  const {user,sendMenssageNotification}=useContext(ContextArea)
 
   const db = getFirestore(Firebase)
   useEffect(()=>{
     //@ts-ignore
     onSnapshot(doc(db, "chats", params.id), (doc) => {setConversa(doc.data())});
   },[])
-  
   
   const flatListRef = useRef()
   const [conversa,setConversa]= useState()
@@ -36,16 +33,29 @@ export function useChat() {
     const data=new Date()
     const dia=[data.getDate(),data.getMonth(),data.getFullYear()]
     const hora=[data.getHours(),data.getMinutes() < 10? "0"+data.getMinutes() :data.getMinutes(),data.getSeconds()]
-
+    
     //@ts-ignore
-    await updateDoc(doc(db, "chats", params.id), {
+    const chatId=params.id
+    
+    await updateDoc(doc(db, "chats", chatId), {
       mensagem: arrayUnion({
         name:user.name,
         id:user.id,
         text:txt,
         date:dia,
         time:hora})
-    }).then()
+    })
+    .then(()=>{
+      // @ts-ignore
+      const token = conversa.names[0].id == user.id ? conversa.names[1].expoToken : conversa.names[0].expoToken
+      const data={
+        name:user.name,
+        text:txt,
+        expoToken:token,
+        chatID:chatId,
+      }
+      return sendMenssageNotification(data)
+    })
     .catch(e=>console.log(e))
     setTxt('')
   }

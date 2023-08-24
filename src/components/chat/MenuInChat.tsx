@@ -13,7 +13,6 @@ interface PropsParams{
   }
 }
 
-
 export function MenuInChat({params}:PropsParams){
   const {nav} =useMenu()
   const { stylesChat, stylesTexts } = useStyle()

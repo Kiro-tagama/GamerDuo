@@ -19,38 +19,47 @@ export function Notification() {
   const {user,setUser} = Auth()
   const [notfMatch,setNotfMatch]=useState<boolean>(false)
 
-  const token = async ()=>(await expoNotifications.getExpoPushTokenAsync()).data
-  console.log(token);
-
-  function sendMatchNotification(params:string) {
+  async function sendMatchNotification(ExpoToken:string) {
     // pega token e o id do chat
     // envia a notificação
-    expoNotifications.scheduleNotificationAsync({
-      content:{
-        //to: params,
-        title: "Match!",
-        body: "Você tem um novo match!",
-        priority: "higt",
+    const message = {
+      to: ExpoToken,
+      sound: 'default',
+      title: 'Novo Match',
+      data: { someData: 'goes here' },
+    };
+  
+    await fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Accept-encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
       },
-      trigger: null,
+      body: JSON.stringify(message),
     });
     // envia a notificação para o chat
   }
   
-  function sendMenssageNotification(params:string) {
-    // pega token e o id do chat and menssage
-    // envia a notificação
-    expoNotifications.scheduleNotificationAsync({
-      content:{
-        //to: params,
-        title: "Match!",
-        body: "Você tem um novo match!",
-        priority: "higt",
+  async function sendMenssageNotification(data:any) {
+    const message = {
+      to: data.expoToken,
+      sound: 'default',
+      title: 'Mensagem de '+data.name ,
+      body: data.text,
+      data: { someData: 'goes here' },
+    };
+    
+    await fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Accept-encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
       },
-      trigger: null,
-    })
-    // envia a notificação para o chat
+      body: JSON.stringify(message),
+    }).catch(err => console.log(err))
   }
   
-  return {notfMatch,setNotfMatch}
+  return {notfMatch,setNotfMatch,sendMatchNotification,sendMenssageNotification}
 }

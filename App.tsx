@@ -12,13 +12,24 @@ import { useColorScheme } from 'react-native';
 import * as ImagePicker from "expo-image-picker";
 import * as expoNotifications from 'expo-notifications';
 
+expoNotifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
+
+async function Permissions() {
+  // permissions 
+  const [statusIMG, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+  const statusNotification  =  await expoNotifications.getPermissionsAsync();
+}
+Permissions()
+
 export default function App() {
   const scheme = useColorScheme()
   const theme = scheme == "dark"? themaDark : themaLigth
-  
-  /// permissions 
-  //const [statusIMG, requestPermission] = ImagePicker.useMediaLibraryPermissions();
-  //const statusNotification  = async ()=> await expoNotifications.getPermissionsAsync();
   
   return (
     <ContextProvider>

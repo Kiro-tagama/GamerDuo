@@ -27,7 +27,7 @@ export function Auth() {
     createUserWithEmailAndPassword(auth, email, pass)
     .then(async (user)=>{
     const data = user.user
-    const token = (await expoNotifications.getExpoPushTokenAsync()).data
+    const token = (await expoNotifications.getDevicePushTokenAsync()).data
     console.log(data.uid);
       try{
         const userRef = doc(collection(db, "users"), data.uid)
@@ -108,9 +108,9 @@ export function Auth() {
   }
 
   async function validationToken() {
-    const token = (await expoNotifications.getExpoPushTokenAsync()).data
+    const token = (await expoNotifications.getDevicePushTokenAsync()).data
     if (user.expoToken != token) {
-      await updateDoc(doc(db, "users", user.id), {chats:token})
+      await updateDoc(doc(db, "users", user.id), {expoToken:token})
       .then(() => console.log("set token: " + token))
       .catch((err) => console.log("err ao alterar token"));
     } 

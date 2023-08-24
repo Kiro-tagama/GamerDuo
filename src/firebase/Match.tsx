@@ -2,6 +2,7 @@ import { addDoc, arrayUnion, collection, doc, getFirestore, setDoc, updateDoc } 
 import { Firebase } from "./Firebase"
 import { Auth } from "./Auth"
 import { getUser } from "../api/api";
+import { Notification } from "./Notification";
 
 const db = getFirestore(Firebase)
 
@@ -14,6 +15,7 @@ interface infoCard{
 
 export function Match() {
   const {user} = Auth()
+  const {sendMatchNotification} =Notification()
 
   async function like(i:infoCard) {
     await updateDoc(doc(db,"users", user.id),{
@@ -57,6 +59,8 @@ export function Match() {
         // isso é necessaro ?
         await updateDoc(doc(db, "chats", docRef.id), {id:docRef.id})
 
+        sendMatchNotification(user1.expoToken)
+        sendMatchNotification(user2.expoToken)
         return console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         return console.error("Error adding document: ", e);
