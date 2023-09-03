@@ -32,7 +32,6 @@ export function Home() {
           style={{height:60,width:60,borderRadius:30,resizeMode:'center',backgroundColor:'#eeeeee6c',padding:20}}
           source={{uri:'https://img.quizur.com/f/img610bf00c06c710.35752032.png'}}
         /> */}
-        <Button title='notifi' onPress={()=>sendMatchNotification("ExponentPushToken[5c8EXqCSELwX-1HEkPKE-t]")}/>
       </View>
 
       <View style={{flex:1,zIndex:10}}>
