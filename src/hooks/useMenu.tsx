@@ -27,7 +27,7 @@ export default function useMenu() {
     elevation: 4,
   }
 
-  const [swiperRef, setSwiperRef] = useState<any>();
+  const [swiperRef, setSwiperRef] = useState<null|Object>();
   const [perfil,setPerfil]=useState<any>(null)
   
   useEffect(()=>{

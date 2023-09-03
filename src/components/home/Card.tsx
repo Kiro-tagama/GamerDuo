@@ -6,7 +6,7 @@ import useMenu from "../../hooks/useMenu";
 
 interface Card{
   profile:{
-    id: string;
+    bio: string;
     name: string;
     img: string;
     agentFav: number;

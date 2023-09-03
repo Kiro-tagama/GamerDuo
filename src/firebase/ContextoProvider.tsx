@@ -7,9 +7,11 @@ export const ContextArea = createContext({})
 
 export function ContextProvider({children}:any) {
   
-  const {createAcount,loginAcount,deslog,user,setUser,errLogin,setErrLogin,deleteMe}= Auth()
+  const {createAcount,loginAcount,deslog,user,setUser,errLogin,setErrLogin,deleteMe,validationToken}= Auth()
   const {like,noLike} = Match()
   const {sendMatchNotification,sendMenssageNotification}= Notification()
+
+  user ? validationToken() : null
 
   return(
     <ContextArea.Provider value={{

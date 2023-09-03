@@ -20,7 +20,7 @@ export function Login() {
       <Modal
         transparent={true}
         visible={errLogin}
-        animationType='slide'
+        animationType="fade"
       >
         <TouchableOpacity 
           style={{flex:1,justifyContent:'center',alignItems:"center",backgroundColor:"#2222228f"}} 

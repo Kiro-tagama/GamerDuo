@@ -23,11 +23,10 @@ export function Home() {
   
   const {setSwiperRef,swiperRef,perfil}= useMenu()
 
-
   return (
     <>
     <View style={stylesHome.container}>
-      <View style={{alignItems:'center',margin:10}}>
+      <View style={{alignItems:'center',margin:10,height:60}}>
         {/* <Image
           style={{height:60,width:60,borderRadius:30,resizeMode:'center',backgroundColor:'#eeeeee6c',padding:20}}
           source={{uri:'https://img.quizur.com/f/img610bf00c06c710.35752032.png'}}

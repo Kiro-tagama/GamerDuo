@@ -11,6 +11,7 @@ import { delUser } from "../api/api";
 const auth = getAuth(Firebase)
 const db = getFirestore(Firebase)
 
+
 export function Auth() {
   const [user,setUser]=useState<any>()
   const [errLogin,setErrLogin]=useState(false)
@@ -26,29 +27,28 @@ export function Auth() {
   function createAcount(name:string,email:string,pass:string) {
     createUserWithEmailAndPassword(auth, email, pass)
     .then(async (user)=>{
-    const data = user.user
-    const token = (await expoNotifications.getDevicePushTokenAsync()).data
-    console.log(data.uid);
+      const data = user.user
+      console.log(data.uid);
       try{
         const userRef = doc(collection(db, "users"), data.uid)
-        await setDoc(userRef,
-          {
-            id:data.uid,
-            expoToken: token,
-            name:name,
-            email:email,
-            img:'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
-            matchs:[],
-            desmatchs:[],
-            chats:[],
-            bio:'',
-            games:{},
-            platforms:{}
-          }
-        ).then(()=>loginAcount(email,pass))
-      } catch(e){
-        console.error(e)
-      }
+          await setDoc(userRef,
+            {
+              id:data.uid,
+              expoToken: "",
+              name:name,
+              email:email,
+              img:'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
+              matchs:[],
+              desmatchs:[],
+              chats:[],
+              bio:'',
+              games:{},
+              platforms:{}
+            }
+          ).then(()=>loginAcount(email,pass))
+        } catch(e){
+          console.error(e)
+        }
     })
     .catch((err)=>{
       setErrLogin(true)
@@ -69,7 +69,6 @@ export function Auth() {
           const userData = userDoc.data();
           await AsyncStorage.setItem("dataUser", JSON.stringify(userData))
           setUser(userData)
-          validationToken()
         } else {
           console.log("Usuário não encontrado no Firestore");
         }
@@ -108,13 +107,12 @@ export function Auth() {
   }
 
   async function validationToken() {
-    const token = (await expoNotifications.getDevicePushTokenAsync()).data
-    if (user.expoToken != token) {
-      await updateDoc(doc(db, "users", user.id), {expoToken:token})
-      .then(() => console.log("set token: " + token))
-      .catch((err) => console.log("err ao alterar token"));
-    } 
+    const token = (await expoNotifications.getExpoPushTokenAsync()).data
+    
+    updateDoc(doc(db, "users", user.id), {expoToken:token})
+    .then(() => console.log("set token: " + token))
+    .catch((err) => console.log("err ao alterar token"));  
   }
 
-  return {loginAcount,createAcount,deslog,deleteMe,user,setUser,errLogin,setErrLogin}
+  return {loginAcount,createAcount,deslog,deleteMe,user,setUser,errLogin,setErrLogin,validationToken}
 }

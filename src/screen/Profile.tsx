@@ -2,9 +2,10 @@ import { View, Text, Image } from "react-native";
 import { Menu } from "../components/menu/Menu";
 import { useStyle } from "../style/style";
 import { useRoute } from "@react-navigation/native";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextArea } from "../firebase/ContextoProvider";
 import { ProfileInfos } from "../components/profile/ProfileInfos";
+import { getUser } from "../api/api";
 
 export function Profile(){
   // @ts-ignore
@@ -12,8 +13,16 @@ export function Profile(){
   const { stylesTexts, stylesProfile } =useStyle()
 
   const {params}=useRoute()
+
+  const [profile,setProfile]= useState<any>(params)
+  useEffect(()=>{
+    async function name() {
+      setProfile(await getUser(profile.id))
+    }name()
+  },[profile])
+
   // @ts-ignore
-  const data= params == null || params.id == user.id ? user: params 
+  const data= params == null || params.id == user.id ? user : profile 
   
   return(
     <>

@@ -1,23 +1,13 @@
 import { initializeApp } from "firebase/app";
 
-import {
-  APP_apiKey,
-  APP_authDomain,
-  APP_projectId,
-  APP_storageBucket,
-  APP_messagingSenderId,
-  APP_appId,
-  APP_measurementId
-} from "@env";
-
 const firebaseConfig = {
-  apiKey: APP_apiKey,
-  authDomain: APP_authDomain,
-  projectId: APP_projectId,
-  storageBucket: APP_storageBucket,
-  messagingSenderId: APP_messagingSenderId,
-  appId: APP_appId,
-  measurementId: APP_measurementId
+  apiKey: "AIzaSyBxVgAoumRO8vTDHJJTp_n2-rl37Qmq29o",
+  authDomain: "gamerduo-251ce.firebaseapp.com",
+  projectId: "gamerduo-251ce",
+  storageBucket: "gamerduo-251ce.appspot.com",
+  messagingSenderId: "76517276234",
+  appId: "1:76517276234:web:92efd437895442233404b3",
+  measurementId: "G-N5JBQC71B1"
 };
 
 export const Firebase = initializeApp(firebaseConfig);
