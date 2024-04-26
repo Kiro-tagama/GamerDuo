@@ -2,6 +2,8 @@
 
 [Notion](https://www.notion.so/kiro-tagama/GamerDuo-d82c0e4f370c4a068f84e1355ee571af?pvs=4)
 
+exemplo
+https://youtu.be/1PFibA4aaCg
 
 O GamerDuo é um aplicativo mobile desenvolvido utilizando React Native, projetado para conectar jogadores que compartilham uma paixão por jogos competitivos. Ele oferece uma plataforma para os usuários encontrarem e se conectarem com parceiros de jogo, aprimorando a experiência de jogos multiplayer.
 
